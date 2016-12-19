@@ -98,7 +98,8 @@
 				$naamtekst, 
 		      '</div>';
 		}
-		$conn = new mysqli('127.0.0.1', 'leesDBacc', 'gesP53aS?bUc', 'devishal');
+		//$conn = new mysqli('127.0.0.1', 'leesDBacc', 'gesP53aS?bUc', 'devishal');
+      $conn = new mysqli('127.0.0.1', 'root', 'usbw', 'devishal');
 		if ($conn->connect_error) {
 			die('DB-verbinding mislukt '.$conn->connect_error);
 		}

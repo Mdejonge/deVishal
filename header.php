@@ -46,11 +46,10 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="#">Active Link</a></li>
-              <li><a href="#">Link</a></li>
               
 		<?php
-			$conn = new mysqli('127.0.0.1', 'leesDBacc', 'gesP53aS?bUc', 'devishal');
+			//$conn = new mysqli('194.171.20.107', 'root', 'groep5Password', 'devishal');
+            $conn = new mysqli('127.0.0.1', 'root', 'usbw', 'devishal');
 			if ($conn->connect_error) {
 				die('DB-verbinding mislukt '.$conn->connect_error);
 			}
@@ -61,7 +60,7 @@
 			$output = '';
 			if (mysqli_num_rows($result)>0) {
 				while($rec = mysqli_fetch_assoc($result)) {
-					if($vorigmenuItem<>$rec[menuItem]) {
+					if($vorigmenuItem<>$rec['menuItem']) {
 						if($vorigmenuItem<>'') $output .= '</ul></li>';
 						$output .= '<li class="dropdown full-width">
 					           		<a href="/'.$rec['submenuItem'].'" class="dropdown-toggle" data-toggle="dropdown">'.$rec['menuItem'].'<b class="caret"></b></a>

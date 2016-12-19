@@ -43,7 +43,7 @@
       <div class="container">
         <div class="col-md-12">
           <div class="kopje-content">
-            <h4>Ledenoverzicht</h4>
+            <h4>Vrijwilligersoverzicht</h4>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 block">
-            <input type="text" id="myInput" onkeyup="filter()" placeholder="Zoeken naar leden...">
+            <input type="text" id="myInput" onkeyup="filter()" placeholder="Zoeken naar vrijwilligers...">
 
 		<ul id="filter">
 			<?php
@@ -76,7 +76,8 @@
 					</li>';
 					echo $output;
 				}
-				$conn = new mysqli('127.0.0.1', 'leesDBacc', 'gesP53aS?bUc', 'devishal');
+				//$conn = new mysqli('127.0.0.1', 'leesDBacc', 'gesP53aS?bUc', 'devishal');
+                $conn = new mysqli('127.0.0.1', 'root', 'usbw', 'devishal');
 				if ($conn->connect_error) {
 					die('DB-verbinding mislukt '.$conn->connect_error);
 				}

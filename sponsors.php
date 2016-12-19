@@ -1,37 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- <meta http-equiv="refresh" content="5" > -->
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>de Vishal</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-  <script src="http://code.jquery.com/jquery-latest.min.js"
-  type="text/javascript"></script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-
-  <script src="https://use.fontawesome.com/4bde63513d.js"></script>
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-
   <!-- Begin navbar -->
   <?php require 'header.php';?>
   <!-- End navbar -->
@@ -55,7 +21,7 @@
     <div class="container">
       <?php
 		function toon_sponsor($naam, $tekst, $zichtbaar, $foto_link) {
-			$naamtekst;
+			$naamtekst = '';
 			if($zichtbaar=1) {
 				$naamtekst = '<a href="/'.$naam.'"><h3>'.$naam.'</h3></a>';
 			}
@@ -68,11 +34,12 @@
 		      		<img src="', $foto_link, '" class="img-responsive">
 		      	</div>
 		      	<div class="row">', 
-		      		$naamtekst, $tekst, 
+		      		$naamtekst, //$tekst,
 		      	'</div>
 		      </div>';
 		}
-		$conn = new mysqli('127.0.0.1', 'leesDBacc', 'gesP53aS?bUc', 'devishal');
+		//$conn = new mysqli('127.0.0.1', 'leesDBacc', 'gesP53aS?bUc', 'devishal');
+      $conn = new mysqli('127.0.0.1', 'root', 'usbw', 'devishal');
 		if ($conn->connect_error) {
 			die('DB-verbinding mislukt '.$conn->connect_error);
 		}
