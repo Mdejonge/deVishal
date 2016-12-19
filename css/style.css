@@ -1,0 +1,828 @@
+html{
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+
+html, body {
+    height: 100%;
+}
+
+.container{
+    max-width: 1181px;
+}
+
+#logo{
+	height: 45px;
+}
+
+.clearfix{
+  clear: both;
+}
+
+.navbar{
+  background: #2a2e33;
+  font-family: Myriad Pro;
+  margin-bottom: 0;
+  border: 0;
+}
+
+.navbar-nav li a {
+ 	line-height: 42px;
+  height: 69px;
+ 	text-transform: uppercase;
+  color: white !important;
+}
+
+.navbar-nav li{
+  border-top: 4px solid transparent;
+}
+
+.navbar-nav li:hover{
+  background-color: #1e2329;
+  border-top: 4px solid #3498db;
+}
+
+.navbar-default .navbar-nav>.active, .navbar-default .navbar-nav>.open{
+  border-top: 4px solid #3498db;
+}
+
+.navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.open>a:hover{
+  background: #1e2329;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
+  background: transparent;
+  box-shadow: none;
+}
+
+.dropdown-submenu {
+   position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top:0;
+  left:100%;
+  margin-top:-6px;
+  margin-left:-1px;
+}
+
+.dropdown-submenu > a:after {
+ border-color: transparent transparent transparent #333;
+ border-style: solid;
+ border-width: 5px 0 5px 5px;
+ content: " ";
+ display: block;
+ float: right;
+ height: 0;
+ margin-right: -10px;
+ margin-top: 5px;
+ width: 0;
+}
+
+.dropdown-submenu:hover>a:after {
+   border-left-color:#555;
+}
+
+.dropdown-menu{
+  background-color: #1e2329;
+  border: 0;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > .active > a:hover {
+ color: #3498db !important;
+ background: transparent;
+}
+
+.dropdown-menu > li:hover, .dropdown-menu > .active:hover{
+  border-top: 4px solid transparent;
+}
+
+@media (max-width: 767px) {
+
+.navbar-collapse{
+  background-color: #2a2e33;
+  border-top: 4px solid #3498db !important;
+}
+ .navbar-nav  {
+    display: inline;
+ }
+ .navbar-default .navbar-brand {
+   display: inline;
+ }
+ .navbar-default .navbar-toggle .icon-bar {
+   background-color: #fff;
+ }
+ .navbar-default .navbar-nav .dropdown-menu > li > a {
+   background-color: transparent
+   margin-top: 2px;
+ }
+
+ .navbar-default .navbar-nav .dropdown-menu > li:hover{
+   background: transparent;
+ }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #333;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    background-color: transparent;
+  }
+
+  .navbar-nav .open .dropdown-menu {
+    border-bottom: 1px solid white;
+    border-radius: 0;
+  }
+ .dropdown-menu {
+     padding-left: 10px;
+ }
+ .dropdown-menu .dropdown-menu {
+     padding-left: 20px;
+  }
+  .dropdown-menu .dropdown-menu .dropdown-menu {
+     padding-left: 30px;
+  }
+  li.dropdown.open {
+   border: 0px solid red;
+  }
+
+}
+
+@media (min-width: 768px) {
+ ul.nav li:hover > ul.dropdown-menu {
+   display: block;
+ }
+ #navbar {
+   text-align: center;
+ }
+
+ .open > ul {
+    display: inline-flex !important;
+ }
+
+ .dropdown-menu > li {
+    display: inline-block;
+    float:right;
+    height: 50px;
+ }
+}
+
+#homepageslider{
+  max-height: 500px;
+  z-index: 0;
+}
+
+#homepageslider img{
+  z-index: 0;
+}
+
+#homepageslider .item{
+  max-height: 500px;
+  z-index: 0;
+}
+
+.kopje-actueel, .kopje-instagram, .kopje-sponsors, .kopje-content{
+    height: 25px;
+    width: 380px;
+    margin: 0 auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+    position: relative;
+    text-transform: uppercase;
+    margin-bottom: -10px;
+    top: -5px;
+}
+
+.kopje-actueel{
+    background: url('../images/texture_kopjes.png') repeat;
+}
+
+.kopje-actueel h4, .kopje-instagram h4, .kopje-sponsors h4, .kopje-content h4{
+  text-align: center;
+  padding: 15px;
+  position: relative;
+}
+
+.kopje-actueel h4::before, .kopje-instagram h4::before, .kopje-sponsors h4::before, .kopje-content h4::before{
+  background: url('../images/shadowleft.png') no-repeat;
+  margin-top: 25px;
+  display: inline-block;
+  height: 38px;
+  width: 35px;
+  content: "";
+  left: -35px;
+  position: absolute;
+  top: -5px;
+
+}
+
+.kopje-actueel h4::after, .kopje-instagram h4::after, .kopje-sponsors h4::after, .kopje-content h4::after{
+  background: url('../images/shadowright.png') no-repeat;
+  margin-top: 25px;
+  display: inline-block;
+  position: absolute;
+  height: 38px;
+  width: 35px;
+  content: "";
+  right: -32px;
+  top: -5px;
+}
+
+.kopje-instagram{
+  background: url('../images/texture_instagram.png') repeat;
+}
+
+.kopje-sponsors{
+  background: #3498db;
+}
+
+.kopje-content{
+  background: white;
+}
+
+.kopjerow{
+  margin-top: -25px;
+}
+
+.actueel{
+  padding: 50px 30px;
+  background: url('../images/texture_kopjes.png') repeat;
+}
+
+.actueel img{
+  max-width: 420px;
+  width: 100%;
+  padding-top: 8px;
+}
+
+.actueel h4{
+  font-size: 4em;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.actueel p{
+  font-size: 2em;
+  line-height: 1.2;
+}
+
+.instagram{
+  background: url('../images/texture_instagram.png') repeat;
+  padding: 50px 0;
+}
+
+.sponsors{
+  background: #3498db;
+  padding: 40px 0;
+}
+
+.sponsors img{
+  -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.sponsors img:hover{
+  -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.footer{
+  background: #333333;
+}
+
+.footer .berichten{
+  color: white;
+}
+
+.footer .berichten .bericht{
+  padding-bottom: 15px;
+}
+
+.footer .berichten a{
+  color: white;
+  text-decoration: none;
+}
+
+.footer .berichten a:hover{
+  color: #3498db;
+}
+
+.footer .berichten span{
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.footer .berichten p{
+  font-style: italic;
+}
+
+.footer h5{
+  color: white;
+  font-size: 1.125em;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+  padding-top: 30px;
+  margin-bottom: 15px;
+}
+
+.nieuwsbrief{
+  padding: 0 20px;
+}
+
+.footer #nieuwsbrief{
+  height: 35px;
+  border-radius: 0;
+  background: #575656;
+  border: none;
+  box-shadow: inset;
+  color: white;
+  -webkit-box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,0.35);
+  -moz-box-shadow: inset 0px 0px 18px 0px rgba(0,0,0,0.35);
+  box-shadow: inset 0px 0px 18px 2px rgba(0,0,0,0.35);
+}
+
+.footer #aanmelden{
+  background-color: #3498db;
+  padding-top: 8px;
+  width: 95px;
+  height: 35px;
+  border: none;
+  border-radius: 0;
+  color: white;
+  border-bottom: 4px solid transparent;
+  margin-left: 10px;
+  right: 0;
+}
+
+.footer #aanmelden:hover{
+  border-bottom: 4px solid white;
+}
+
+.footer .social-media{
+  margin-top: 130px;
+  color: white;
+  text-align: center;
+  box-shadow: 0;
+}
+
+.footer .social-media a{
+  color: white;
+  -webkit-transition: all ease 0.3s;
+	-moz-transition: all ease 0.3s;
+	transition: all ease 0.3s;
+}
+
+.footer .social-media a:hover{
+  color: #3498db;
+}
+
+.footer .social-media .fa {
+  border: 2px solid;
+  margin: 0 10px;
+
+}
+
+.footer .social-media .fa-facebook{
+    padding: 5px 11px;
+}
+
+.footer .social-media .fa-instagram{
+  padding: 5px 7px;
+}
+
+.footer .social-media .fa-youtube{
+  padding: 5px 7px;
+}
+
+.footer .contact{
+  color: white;
+  text-align: center;
+}
+
+.footer .contact h5{
+  text-align: left;
+}
+
+.footer .contact a{
+  color: #3498db;
+  text-decoration: none;
+}
+
+.footer .contact a:hover{
+  text-decoration: underline;
+}
+
+.footer #copyright{
+  color: white;
+  background: #1f1f1f;
+  padding: 5px;
+  text-align: center;
+  margin-top: 10px;
+  border-top: 1px solid black;
+  font-size: 0.9em;
+}
+/*Instagram*/
+/* carousel */
+.media-carousel
+{
+  margin-bottom: 0;
+  padding: 0 40px 30px 40px;
+  margin-top: 30px;
+}
+
+.carousel-inner{
+  text-align: center;
+}
+
+/* Previous button  */
+.media-carousel .carousel-control.left
+{
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #FFFFFF;
+  border-radius: 23px 23px 23px 23px;
+  height: 40px;
+  width : 40px;
+  top: 50%;
+  margin-top: -50px
+}
+/* Next button  */
+.media-carousel .carousel-control.right
+{
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #FFFFFF;
+  border-radius: 23px 23px 23px 23px;
+  height: 40px;
+  width : 40px;
+  top: 50%;
+  margin-top: -50px
+}
+/* Changes the position of the indicators */
+.media-carousel .carousel-indicators
+{
+  right: 50%;
+  top: auto;
+  bottom: 0px;
+  margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.media-carousel .carousel-indicators li
+{
+  background: #c0c0c0;
+}
+.media-carousel .carousel-indicators .active
+{
+  background: #333333;
+}
+.media-carousel img
+{
+  max-width: 240px;
+  max-height: 240px
+}
+/* End carousel */
+
+.toppage{
+  height: 105px;
+  background: url('../images/texture_instagram.png') repeat;
+}
+
+.content{
+  padding: 50px 0;
+}
+
+.content img.right{
+  padding: 20px 0 0 20px;
+  float: right;
+}
+
+.contactrow{
+  padding: 50px 0;
+}
+
+.contactrow .center{
+  text-align: center;
+}
+
+.contactrow .right{
+  text-align: right;
+}
+
+.contactrow a:hover{
+  cursor: pointer;
+}
+
+.contactrow h5{
+  color: black;
+  font-size: 1.125em;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+  padding-top: 30px;
+  margin-bottom: 15px;
+}
+
+.contactrow form{
+  padding-bottom: 20px;
+}
+
+.contactrow #verstuur {
+  margin-top: 70%;
+  background-color: #3498db;
+  background-image: none;
+  border: none;
+  border-bottom: 4px solid transparent;
+  padding-top: 8px;
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+
+.contactrow #verstuur:hover {
+  background-color: #333;
+}
+
+#map{
+  height: 400px;
+  width: 100%;
+}
+
+.row{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.sponsorpage{
+  padding: 50px 0;
+}
+
+.sponsorpage a{
+  color: #333;
+}
+
+.sponsorpage a:hover{
+  color: #3498db;
+  text-decoration: none;
+}
+
+.sponsorpage img{
+  height: 155px;
+  margin: 0 auto;
+}
+
+.sponsorpage .logo{
+  text-align: center;
+}
+
+.sponsorpage h3{
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+}
+
+.sponsorpage .sponsor{
+  padding-bottom: 50px;
+}
+
+.sponsorpage .row:last-child{
+  text-align: center;
+}
+
+.vrijwilligers{
+  padding: 50px 0;
+}
+
+.vrijwilligers h3{
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+}
+
+.vrijwilligers .block{
+  padding: 0 20px;
+}
+
+.vrijwilligers .person h4{
+  background: #333;
+  padding: 10px;
+  color: white;
+  border-bottom: 2px solid #3498db;
+}
+
+.vrijwilligers .person p{
+  visibility: hidden;
+  height: 0;
+}
+
+.vrijwilligers .person a:focus ~ p{
+  visibility: visible;
+  height: auto;
+}
+
+#myInput {
+    background-image: url('/images/searchicon.png'); /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -333px; /* the bottom margin is the negative value of the footer's height */
+}
+
+
+.footer, .push {
+     height: 333px;/* .push must be the same height as .footer */
+}
+
+#filter {
+    /* Remove default list styling */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#filter li a {
+    border: 1px solid #ddd; /* Add a border to all links */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    color: black; /* Add a black text color */
+    display: block; /* Make it into a block element to fill the whole list */
+    cursor: pointer;
+}
+
+#filter li a.header {
+    background-color: #e2e2e2; /* Add a darker background color for headers */
+    cursor: default; /* Change cursor style */
+}
+
+#filter li a:hover:not(.header) {
+    background-color: #eee; /* Add a hover effect to all links, except for headers */
+}
+
+#filter li span{
+  display: none;
+  padding: 0;
+}
+
+#filter li span .description{
+  padding: 10px 0;
+}
+
+#filter li span .description img{
+  padding-right: 10px;
+}
+
+#filter li span .description .link{
+  bottom: 0;
+  position: absolute;
+  margin: 10px 0;
+}
+
+span .row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+span .row > [class*='description'] {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .dropdown .dropdown-menu {
+    height: 0px;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    opacity:0;
+    -webkit-transition: height 500ms ease;
+    -moz-transition: height 500ms ease;
+    -ms-transition: height 500ms ease;
+    -o-transition: height 500ms ease;
+    transition: height 500ms ease;
+    visibility: hidden;
+
+  }
+
+  .dropdown:hover .dropdown-menu {
+      height: 60px;
+      opacity: 1;
+      visibility: visible;
+  }
+
+  .full-width.dropdown {
+      position: static;
+  }
+  .full-width.dropdown > .dropdown-menu {
+      left: 0;
+      right: 0;
+      position: absolute;
+  }
+  .full-width.dropdown > .dropdown-menu > li > a {
+     white-space: normal;
+  }
+
+
+  .fill-width.dropdown {
+      position: static;
+  }
+  .fill-width.dropdown > .dropdown-menu {
+      left: auto;
+      position: absolute;
+  }
+  .fill-width.dropdown > .dropdown-menu > li > a {
+     white-space: normal;
+  }
+}
+
+@media screen and (max-width: 992px ) {
+  .insta{
+    padding: 20px 0;
+  }
+
+  .insta img{
+    padding: 0 20px;
+  }
+
+  .sponsor{
+     margin: 0 auto;
+  }
+
+  .footer .social-media{
+    margin-top: 50px;
+  }
+
+  .contactrow .center, .contactrow .right{
+    text-align: left;
+  }
+
+  .contactrow #verstuur {
+    margin-top: 0;
+  }
+
+  #filter li span .description .link{
+    position: relative;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+    #logo{
+    	height: 30px;
+    }
+
+    .navbar-default {
+    	height: 53px;
+    }
+
+    #homepageslider{
+      z-index: 0;
+    }
+
+    .actueel img{
+      margin: 0 auto;
+      padding-bottom: 50px;
+    }
+
+    .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+      background-color: transparent;
+    }
+
+    .footer #nieuwsbrief{
+      max-width: 250px;
+      margin: 0 20px;
+
+    }
+
+    .footer .nieuwsbrief{
+      padding: 0;
+    }
+
+    .footer #aanmelden{
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+}
