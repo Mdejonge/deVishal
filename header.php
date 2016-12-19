@@ -31,6 +31,9 @@
     <![endif]-->
   </head>
   <body>
+  <?php
+  include 'config.php';
+  ?>
 
 <div id="navbar">
   <nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -49,7 +52,7 @@
               
 		<?php
 			//$conn = new mysqli('194.171.20.107', 'root', 'groep5Password', 'devishal');
-            $conn = new mysqli('127.0.0.1', 'root', 'usbw', 'devishal');
+            //$conn = new mysqli('127.0.0.1', 'root', 'usbw', 'devishal');
 			if ($conn->connect_error) {
 				die('DB-verbinding mislukt '.$conn->connect_error);
 			}
@@ -63,7 +66,7 @@
 					if($vorigmenuItem<>$rec['menuItem']) {
 						if($vorigmenuItem<>'') $output .= '</ul></li>';
 						$output .= '<li class="dropdown full-width">
-					           		<a href="/'.$rec['submenuItem'].'" class="dropdown-toggle" data-toggle="dropdown">'.$rec['menuItem'].'<b class="caret"></b></a>
+					           		<a href="/'.$rec['submenuItem'].'" class="dropdown-toggle">'.$rec['menuItem'].'<b class="caret"></b></a>
 					            		<ul class="dropdown-menu">';
 					      $vorigmenuItem = $rec['menuItem'];
 					}

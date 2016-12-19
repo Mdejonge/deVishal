@@ -1,5 +1,8 @@
   <!-- Begin navbar -->
-  <?php require 'header.php';?>
+  <?php
+    require 'header.php';
+    include 'config.php';
+  ?>
   <!-- End navbar -->
 
   <!-- Begin toppage -->
@@ -38,12 +41,6 @@
 		      	'</div>
 		      </div>';
 		}
-		//$conn = new mysqli('127.0.0.1', 'leesDBacc', 'gesP53aS?bUc', 'devishal');
-      $conn = new mysqli('127.0.0.1', 'root', 'usbw', 'devishal');
-		if ($conn->connect_error) {
-			die('DB-verbinding mislukt '.$conn->connect_error);
-		}
-		mysqli_set_charset($conn,'utf8');
 		$query = 'SELECT pagina.titel, pagina.tekst, sponsor.foto_link, pagina.zichtbaar FROM sponsor LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId ORDER BY volgorde';
 		$result = mysqli_query($conn, $query);
 		if (mysqli_num_rows($result)>0) {

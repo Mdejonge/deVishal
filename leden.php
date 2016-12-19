@@ -1,7 +1,10 @@
-  <!-- Begin navbar -->
-  <?php require 'header.php';?>
+
+<!-- Begin navbar -->
+  <?php
+    require 'header.php';
+    include 'config.php';
+  ?>
   <!-- End navbar -->
-  <?php require 'config.php' ;?>
     <!-- Begin toppage -->
     <div class="row toppage">
     </div>
@@ -28,7 +31,7 @@
 				function toon_lid($voornaam, $achternaam, $website) {
 					echo '<li><a href="', $website, '">', $voornaam, ' ', $achternaam, '</a></li>';
 				}
-				mysqli_set_charset($conn,'utf8');
+            
 				$query = 'SELECT contact.voornaam, contact.achternaam, lid.website FROM lid INNER JOIN contact ON contact.contactId = lid.contactId ORDER BY contact.achternaam';
 				$result = mysqli_query($conn, $query);
 				if (mysqli_num_rows($result)>0) {
