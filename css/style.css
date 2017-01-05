@@ -28,10 +28,14 @@ html, body {
 }
 
 .navbar-nav li a {
- 	line-height: 42px;
+ 	line-height: 50px;
   height: 69px;
  	text-transform: uppercase;
   color: white !important;
+}
+
+.nav>li>a{
+  padding: 10px 13px !important;
 }
 
 .navbar-nav li{
@@ -64,6 +68,10 @@ html, body {
   left:100%;
   margin-top:-6px;
   margin-left:-1px;
+}
+
+.dropdown-menu>li>a {
+  line-height: 40px;
 }
 
 .dropdown-submenu > a:after {
@@ -155,8 +163,10 @@ html, body {
    text-align: center;
  }
 
- .open > ul {
-    display: inline-flex !important;
+ .open .dropdown-menu > li {
+    display: inline-block;
+    float:right;
+    height: 50px;
  }
 
  .dropdown-menu > li {
@@ -743,7 +753,6 @@ span .row > [class*='description'] {
   .full-width.dropdown > .dropdown-menu > li > a {
      white-space: normal;
   }
-
 
   .fill-width.dropdown {
       position: static;

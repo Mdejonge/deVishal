@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <?php
-  include 'config.php';
-  ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <?php
+      if($_SERVER['SERVER_NAME'] == '194.171.20.107')
+      {
+          echo '<base href="/devishal/" />';
+      }
+
+      elseif($_SERVER['SERVER_NAME'] == 'localhost')
+      {
+          echo '<base href="/deVishal/" />';
+      }
+      ?>
     <!-- <meta http-equiv="refresh" content="5" > -->
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>de Vishal</title>
@@ -34,17 +43,20 @@
     <![endif]-->
   </head>
   <body>
+  <?php
+  include 'config.php';
+  ?>
 
 <div id="navbar">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-				</button>-->
+				</button>
 				<a class="navbar-brand" href="#"><img src="images/logo_vishal.png" id="logo"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -68,7 +80,7 @@
 				if($vorigmenuItem<>'')
 					$output .= '</ul></li>';
 				$output .= '<li class="dropdown full-width">
-				<a href="/'.$rec['submenuItem'].'" class="dropdown-toggle" >'.$rec['menuItem'].'<b class="caret"></b></a>
+				<a href="/'.$rec['submenuItem'].'" class="dropdown-toggle" data-toggle="dropdown">'.$rec['menuItem'].'<b class="caret"></b></a>
 				<ul class="dropdown-menu">';
 				$vorigmenuItem = $rec['menuItem'];
 			}
