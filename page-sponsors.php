@@ -1,7 +1,6 @@
   <!-- Begin navbar -->
   <?php
   require 'header.php';
-  include 'config.php';
 
     if (isset($_GET['sponsor_name'])) {
         $sponsor = $_GET['sponsor_name'];
@@ -79,18 +78,18 @@
 		      '</div>';
 		}
 
+        get_result('SELECT pagina.titel, sponsor.foto_link, pagina.zichtbaar FROM sponsor LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId ORDER BY volgorde');
 
-		$query = 'SELECT pagina.titel, sponsor.foto_link, pagina.zichtbaar FROM sponsor LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId ORDER BY volgorde';
-		$result = mysqli_query($conn, $query);
-		if (mysqli_num_rows($result)>0) {
-			while($rec = mysqli_fetch_assoc($result)) {
-				toon_sponsor($rec['titel'], $rec['zichtbaar'], $rec['foto_link']);
-			}
-		}
-		else {
-			echo  'Helaas, geen gegevens gevonden.';
-		}
-		mysqli_close($conn);
+      if($result = get_result('SELECT titel, tekst, sponsorfooter, paginaId
+          FROM pagina')){
+          while($rec = mysqli_fetch_assoc($result)) {
+              toon_sponsor($rec['titel'], $rec['zichtbaar'], $rec['foto_link']);
+          }
+      }
+      else{
+          echo  'Helaas, geen gegevens gevonden.';
+      }
+      
 	?>
     </div>
   </div>
