@@ -28,14 +28,10 @@ html, body {
 }
 
 .navbar-nav li a {
- 	line-height: 50px;
+ 	line-height: 43px;
   height: 69px;
  	text-transform: uppercase;
   color: white !important;
-}
-
-.nav>li>a{
-  padding: 10px 13px !important;
 }
 
 .navbar-nav li{
@@ -58,6 +54,10 @@ html, body {
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
   background: transparent;
   box-shadow: none;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+  background-color: transparent !important;
 }
 
 .dropdown-submenu {
