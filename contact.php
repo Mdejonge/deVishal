@@ -1,7 +1,6 @@
 <!-- Begin navbar -->
 <?php
 require 'header.php';
-require 'dbconnect.php';
 
     if($result = get_result('SELECT titel, tekst, sponsorfooter, paginaId
           FROM pagina')){
