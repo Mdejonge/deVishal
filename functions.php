@@ -44,7 +44,7 @@ function toon_sponsors($naam, $tekst, $zichtbaar, $foto_link) {
 }
 
 function toon_sponsor($naam, $zichtbaar, $foto_link) {
-    $naamtekst;
+    $naamtekst = '';
     if($zichtbaar=1) {
         $naamtekst = '<a href="/'.$naam.'"><img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'"></a>';
     }
