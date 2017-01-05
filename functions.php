@@ -64,8 +64,8 @@ function toon_bericht($naam, $startdatum, $foto_link) {
 		              		<img src="/'.$foto_link.'" class="img-responsive">
 		            	</div>
 		            	<div class="col-xs-7 col-sm-7 col-md-7">
-		              		<span>"'.$naam.'"</span>
-		              		<p>"/'.$startdatum.'"</p>
+		              		<span>'.$naam.'</span>
+		              		<p>'.$startdatum.'</p>
 		            	</div>
 		            </a>
 		      </div>';
