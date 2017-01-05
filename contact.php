@@ -2,6 +2,25 @@
 <?php
 require 'header.php';
 include 'config.php';
+
+$content = '';
+$titel = '';
+$footer = '';
+
+$query = 'SELECT titel, tekst, sponsorfooter
+          FROM pagina';
+$result = mysqli_query($conn, $query);
+if (mysqli_num_rows($result)>0) {
+    while($rec = mysqli_fetch_assoc($result)) {
+        $titel = $rec['titel'];
+        $content = $rec['tekst'];
+        $footer = $rec['sponsorfooter'];
+    }
+}
+else {
+    echo  'Helaas, geen gegevens gevonden.';
+}
+
 ?>
 <!-- End navbar -->
 
@@ -12,7 +31,7 @@ include 'config.php';
     <div class="container">
         <div class="col-md-12">
             <div class="kopje-content">
-                <h4>Contact</h4>
+                <h4><?=$titel?></h4>
             </div>
         </div>
     </div>
@@ -20,40 +39,7 @@ include 'config.php';
 <!-- End toppage -->
 
 <!-- Begin content -->
-<div class="row content contactrow">
-    <div class="container">
-        <div class="col-md-4 left">
-            <h5>Kopje</h5>
-        <span>
-          Kunstenaarsvereniging de Vishal<br>
-          Grote Markt 20<br>
-          2011 RD Haarlem<br>
-          Tel.: 023-5326856<br>
-          E-mail: <a href="mailto:de.vishal@gmail.com">de.vishal@gmail.com</a>
-        </span>
-        </div>
-        <div class="col-md-4 center">
-            <h5>Kopje</h5>
-        <span>
-          De Vishal – ruimte voor beeldende kunst in Haarlem – is met circa 150 aangesloten leden het grootste ‘kunstenaarsinitiatief’ van Haarlem, en biedt voor alle aangesloten professioneel werkende kunstenaars een voor Haarlem uniek podium.
-        </span>
-        </div>
-        <div class="col-md-4 right">
-            <h5>Kopje</h5>
-            <p>
-                <b>Maandag:</b> Gesloten<br>
-                <b>Dinsdag t/m zaterdag:</b> 11 tot 17 uur<br>
-                <b>Zondag:</b> 13 tot 17 uur
-            </p>
-            <p>
-                <b>Gesloten op:</b><br>
-                1e en 2e Kerstdag, 1 januari<br>
-                1e en 2e Paasdag, Koningsdag<br>
-                5 mei, 1e en 2e Pinksterdag<br>
-            </p>
-        </div>
-    </div>
-</div>
+<?=$content?>
 
 <!-- Begin contactform -->
 <form>
