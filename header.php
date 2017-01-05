@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <?php
+  include 'config.php';
+  ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-      <?php
-      if($_SERVER['SERVER_NAME'] == '194.171.20.107')
-      {
-          echo '<base href="/devishal/" />';
-      }
-
-      elseif($_SERVER['SERVER_NAME'] == 'localhost')
-      {
-          echo '<base href="/deVishal/" />';
-      }
-      ?>
     <!-- <meta http-equiv="refresh" content="5" > -->
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>de Vishal</title>
@@ -43,9 +34,6 @@
     <![endif]-->
   </head>
   <body>
-  <?php
-  include 'config.php';
-  ?>
 
 <div id="navbar">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
