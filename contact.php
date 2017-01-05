@@ -6,7 +6,7 @@ require 'header.php';
               FROM pagina';
     $result = $conn->query($query);
     if($result->num_rows > 0){
-        while($rec = $result->fetch_assoc()) {
+        while($rec = $result->fetch_assoc()) { 
             $titel = $rec['titel'];
             $content = $rec['tekst'];
             $footer = $rec['sponsorfooter'];
