@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <?php
+  session_start();
+  include 'config.php';
+  ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,20 +47,17 @@
     <![endif]-->
   </head>
   <body>
-  <?php
-  include 'config.php';
-  ?>
 
 <div id="navbar">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+				<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-				</button>
+				</button>-->
 				<a class="navbar-brand" href="#"><img src="images/logo_vishal.png" id="logo"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -80,12 +81,12 @@
 				if($vorigmenuItem<>'')
 					$output .= '</ul></li>';
 				$output .= '<li class="dropdown full-width">
-				<a href="/'.$rec['submenuItem'].'" class="dropdown-toggle" data-toggle="dropdown">'.$rec['menuItem'].'</a>
+				<a href="'.$rec['submenuItem'].'" class="dropdown-toggle" >'.$rec['menuItem'].'<b class="caret"></b></a>
 				<ul class="dropdown-menu">';
 				$vorigmenuItem = $rec['menuItem'];
 			}
 			if($rec['volgorde']>-1)
-				$submenu = '<li><a href="/'.$rec['submenuItem'].'">'.$rec['submenuItem'].'</a></li>'.$submenu;
+				$submenu = '<li><a href="'.$rec['menuItem'].'/'.$rec['submenuItem'].'">'.$rec['submenuItem'].'</a></li>'.$submenu;
 		}
 		$output .= $submenu;
 		echo $output;
