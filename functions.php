@@ -1,8 +1,6 @@
 <?php
 include_once 'config.php';
 
-
-
 function toon_lid($voornaam, $achternaam, $website) {
     echo '<li><a href="', $website, '" target="_blank">', $voornaam, ' ', $achternaam, '</a></li>';
 }
