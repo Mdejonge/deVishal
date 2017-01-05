@@ -73,7 +73,7 @@
 				$vorigmenuItem = $rec['menuItem'];
 			}
 			if($rec['volgorde']>-1)
-				$submenu = '<li><a href="/'.$rec['submenuItem'].'">'.$rec['submenuItem'].'</a></li>'.$submenu;
+				$submenu = '<li><a href="'.$rec['menuItem'].'/'.$rec['submenuItem'].'">'.$rec['submenuItem'].'</a></li>'.$submenu;
 		}
 		$output .= $submenu;
 		echo $output;
