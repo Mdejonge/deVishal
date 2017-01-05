@@ -71,7 +71,7 @@ function toon_bericht($naam, $startdatum, $foto_link) {
 }
 
 function toon_pagina($nummer) {
-    $conn = new mysqli(HOST, USER, PASSWORD, DATABASE);
+    global $conn;
     if ($conn->connect_error) {
         die('DB-verbinding mislukt '.$conn->connect_error);
     }
