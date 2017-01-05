@@ -65,11 +65,15 @@
     <div class='row'>
       <?php
 		
-        get_result('SELECT pagina.titel, sponsor.foto_link, pagina.zichtbaar FROM sponsor LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId ORDER BY volgorde');
+        $query = 'SELECT pagina.titel, sponsor.foto_link, pagina.zichtbaar 
+                    FROM sponsor 
+                    LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId 
+                    ORDER BY volgorde';
 
-      if($result = get_result('SELECT titel, tekst, sponsorfooter, paginaId
-          FROM pagina')){
-          while($rec = mysqli_fetch_assoc($result)) {
+      $result = $conn->query($query);
+
+      if($result->num_rows > 0){
+          while($rec = $result->fetch_assoc()) {
               toon_sponsor($rec['titel'], $rec['zichtbaar'], $rec['foto_link']);
           }
       }
