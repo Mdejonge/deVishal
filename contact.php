@@ -2,9 +2,11 @@
 <?php
 require 'header.php';
 
-    if($result = get_result('SELECT titel, tekst, sponsorfooter, paginaId
-          FROM pagina')){
-        while($rec = mysqli_fetch_assoc($result)) {
+    $query = 'SELECT titel, tekst, sponsorfooter, paginaId
+              FROM pagina';
+    $result = $conn->query($query);
+    if($result->num_rows > 0){
+        while($rec = $result->fetch_assoc()) {
             $titel = $rec['titel'];
             $content = $rec['tekst'];
             $footer = $rec['sponsorfooter'];
