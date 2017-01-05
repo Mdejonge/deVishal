@@ -44,7 +44,13 @@ require 'header.php';
 <!-- End toppage -->
 
 <!-- Begin content -->
-<?=$content?>
+<div class="row content contactrow">
+    <div class="container">
+        <div class="col-md-4 left">
+            <?=$content?>
+        </div>
+    </div>
+</div>
 
 <!-- Begin contactform -->
 <form>
