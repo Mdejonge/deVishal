@@ -68,7 +68,7 @@
 				if($vorigmenuItem<>'')
 					$output .= '</ul></li>';
 				$output .= '<li class="dropdown full-width">
-				<a href="/'.$rec['submenuItem'].'" class="dropdown-toggle" >'.$rec['menuItem'].'<b class="caret"></b></a>
+				<a href="'.$rec['submenuItem'].'" class="dropdown-toggle" >'.$rec['menuItem'].'<b class="caret"></b></a>
 				<ul class="dropdown-menu">';
 				$vorigmenuItem = $rec['menuItem'];
 			}
