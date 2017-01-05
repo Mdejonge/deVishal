@@ -64,20 +64,7 @@
   <div class="row sponsors">
     <div class='row'>
       <?php
-		function toon_sponsor($naam, $zichtbaar, $foto_link) {
-			$naamtekst;
-			if($zichtbaar=1) {
-				$naamtekst = '<a href="/'.$naam.'"><img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'"></a>';
-			}
-		      else {
-		      	$naamtekst = '<img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'">';
-		      }
-			echo 
-			'<div class="col-sm-3 col-md-3">', 
-				$naamtekst, 
-		      '</div>';
-		}
-
+		
         get_result('SELECT pagina.titel, sponsor.foto_link, pagina.zichtbaar FROM sponsor LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId ORDER BY volgorde');
 
       if($result = get_result('SELECT titel, tekst, sponsorfooter, paginaId

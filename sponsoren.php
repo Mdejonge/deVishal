@@ -22,29 +22,12 @@
   <div class="row sponsorpage">
     <div class="container">
       <?php
-		function toon_sponsor($naam, $tekst, $zichtbaar, $foto_link) {
-			$naamtekst = '';
-			if($zichtbaar=1) {
-				$naamtekst = '<a href="Sponsoren/'.$naam.'"><h3>'.$naam.'</h3></a>';
-			}
-		      else {
-		      	$naamtekst = '<h3>'.$naam.'</h3>';
-		      }
-			echo 
-			'<div class="col-md-4 sponsor">
-		      	<div class="row logo">
-		      		<img src="', $foto_link, '" class="img-responsive">
-		      	</div>
-		      	<div class="row">', 
-		      		$naamtekst, //$tekst,
-		      	'</div>
-		      </div>';
-		}
+      
 		$query = 'SELECT pagina.titel, pagina.tekst, sponsor.foto_link, pagina.zichtbaar FROM sponsor LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId ORDER BY volgorde';
 		$result = mysqli_query($conn, $query);
 		if (mysqli_num_rows($result)>0) {
 			while($rec = mysqli_fetch_assoc($result)) {
-				toon_sponsor($rec['titel'], $rec['tekst'], $rec['zichtbaar'], $rec['foto_link']);
+				toon_sponsors($rec['titel'], $rec['tekst'], $rec['zichtbaar'], $rec['foto_link']);
 			}
 		}
 		else {
