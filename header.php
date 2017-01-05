@@ -60,12 +60,13 @@
 	$vorigmenuItem = '';
 	$output = '';
 	$submenu = '';
-    $result = get_result("SELECT menuItem.naam AS 'menuItem', submenuItem.naam AS 'submenuItem', submenuItem.volgorde 
+    $query = "SELECT menuItem.naam AS 'menuItem', submenuItem.naam AS 'submenuItem', submenuItem.volgorde 
                               FROM menuItem 
                               INNER JOIN submenuItem ON submenuItem.menuId = menuItem.menuId 
-                              ORDER BY menuItem.volgorde, submenuItem.volgorde");
-    if($result){
-        while($rec = mysqli_fetch_assoc($result)) {
+                              ORDER BY menuItem.volgorde, submenuItem.volgorde";
+    $result = $conn->query($query);
+    if($result->num_rows > 0) {
+        while($rec = $result->fetch_assoc()) {
             if($vorigmenuItem<>$rec['menuItem']) {
                 $output .= $submenu;
                 $submenu = '';
