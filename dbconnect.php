@@ -6,13 +6,4 @@ $conn = new mysqli(HOST, USER, PASSWORD, DATABASE);
     }
     mysqli_set_charset($conn,'utf8');
 
-function get_result($query){
-    global $conn;
-    $result = mysqli_query($conn, $query);
-    if (mysqli_num_rows($result)>0) {
-        return $result;
-    }
-
-    return false;
-}
 ?>
