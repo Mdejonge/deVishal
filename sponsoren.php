@@ -36,7 +36,6 @@
 		else {
 			echo  'Helaas, geen gegevens gevonden.';
 		}
-		mysqli_close($conn);
 	?>
     </div>
   </div>
