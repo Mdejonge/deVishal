@@ -4,6 +4,7 @@
       <div class="col-md-4 berichten">
         <h5>Recente Berichten</h5>
         	<?php
+            require 'dbconnect.php';
 
             $query = 'SELECT pagina.titel, tentoonstelling.datum_start, tentoonstelling.foto_link 
                       FROM tentoonstelling, pagina 
