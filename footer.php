@@ -1,4 +1,4 @@
-﻿<?php include 'config.php'; ?>
+<?php include 'config.php'; ?>
 <!-- Begin footer -->
   <div class="row footer">
     <div class="container">
@@ -7,18 +7,18 @@
         	<?php
         	function toon_bericht($naam, $startdatum, $foto_link) {
 			echo '<div class="row bericht">
-		      	<a href="/'.$naam.'">
+		      	<a href='.$naam.'>
 		            	<div class="col-xs-5 col-sm-5 col-md-5">
 		              		<img src="/'.$foto_link.'" class="img-responsive">
 		            	</div>
 		            	<div class="col-xs-7 col-sm-7 col-md-7">
-		              		<span>"/'.$naam.'"</span>
-		              		<p>"/'.$startdatum.'"</p>
+		              		<span>'.$naam.'</span>
+		              		<p>'.$startdatum.'</p>
 		            	</div>
 		            </a>
 		      </div>';
 		}
-        	$query = 'SELECT pagina.titel, tentoonstelling.datum_start, tentoonstelling.foto_link FROM tentoonstelling, pagina WHERE tentoonstelling.paginaId = pagina.paginaId AND pagina.zichtbaar ORDER BY tentoonstelling.datum_start DESC LIMIT 2';
+		$query = 'SELECT pagina.titel, tentoonstelling.datum_start, tentoonstelling.foto_link FROM tentoonstelling, pagina WHERE tentoonstelling.paginaId = pagina.paginaId AND pagina.zichtbaar ORDER BY tentoonstelling.datum_start DESC LIMIT 2';
 		$result = mysqli_query($conn, $query);
 		if (mysqli_num_rows($result)>0) {
 			while($rec = mysqli_fetch_assoc($result)) {
@@ -63,3 +63,5 @@
       </div>
     </div>
 <!-- End footer -->
+    </body>
+</html>
