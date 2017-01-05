@@ -45,7 +45,6 @@
         </div>
       </div>
     </div>
-    <div class="push"></div>
   </div>
   <!-- End content -->
 

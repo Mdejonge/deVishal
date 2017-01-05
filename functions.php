@@ -3,7 +3,7 @@ include_once 'config.php';
 
 
 function toon_lid($voornaam, $achternaam, $website) {
-    echo '<li><a href="', $website, '">', $voornaam, ' ', $achternaam, '</a></li>';
+    echo '<li><a href="', $website, '" target="_blank">', $voornaam, ' ', $achternaam, '</a></li>';
 }
 
 function toon_vrijwilliger($voornaam, $achternaam, $foto_link, $tekst) {

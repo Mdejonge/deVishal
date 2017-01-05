@@ -121,7 +121,7 @@ html, body {
    background-color: #fff;
  }
  .navbar-default .navbar-nav .dropdown-menu > li > a {
-   background-color: transparent
+   background-color: transparent;
    margin-top: 2px;
  }
 
