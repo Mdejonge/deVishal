@@ -1,27 +1,25 @@
 <!-- Begin navbar -->
 <?php
 require 'header.php';
-include 'config.php';
 
-$content = '';
-$titel = '';
-$paginaId = '';
-$footer = '';
-
-$query = 'SELECT titel, tekst, sponsorfooter, paginaId
-          FROM pagina';
-$result = mysqli_query($conn, $query);
-if (mysqli_num_rows($result)>0) {
-    while($rec = mysqli_fetch_assoc($result)) {
-        $titel = $rec['titel'];
-        $content = $rec['tekst'];
-        $footer = $rec['sponsorfooter'];
-        $paginaId = $rec['paginaId'];
+    $query = 'SELECT titel, tekst, sponsorfooter, paginaId
+              FROM pagina';
+    $result = $conn->query($query);
+    if($result->num_rows > 0){
+        while($rec = $result->fetch_assoc()) { 
+            $titel = $rec['titel'];
+            $content = $rec['tekst'];
+            $footer = $rec['sponsorfooter'];
+            $paginaId = $rec['paginaId'];
+        }
     }
-}
-else {
-    echo  'Helaas, geen gegevens gevonden.';
-}
+    else{
+        $titel = '';
+        $content = '';
+        $footer = '';
+        $paginaId = '';
+    }
+
 
 ?>
 <!-- End navbar -->

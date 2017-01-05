@@ -3,15 +3,16 @@
   <head>
   <?php
   session_start();
-  include('functions.php');
+  include_once 'functions.php';
+  include_once 'dbconnect.php';
+
   ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <?php
-        checkLocal();
-      ?>
+    <base href=<?=ROOT?> />
+
     <!-- <meta http-equiv="refresh" content="5" > -->
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>de Vishal</title>
@@ -44,21 +45,47 @@
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+				<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-				</button>
+				</button>-->
 				<a class="navbar-brand" href="#"><img src="images/logo_vishal.png" id="logo"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 
-            <?php
-            navigation($conn);
-            ?>
-
+	<?php
+	$vorigmenuItem = '';
+	$output = '';
+	$submenu = '';
+    $query = "SELECT menuItem.naam AS 'menuItem', submenuItem.naam AS 'submenuItem', submenuItem.volgorde 
+                              FROM menuItem 
+                              INNER JOIN submenuItem ON submenuItem.menuId = menuItem.menuId 
+                              ORDER BY menuItem.volgorde, submenuItem.volgorde";
+    $result = $conn->query($query);
+    if($result->num_rows > 0) {
+        while($rec = $result->fetch_assoc()) {
+            if($vorigmenuItem<>$rec['menuItem']) {
+                $output .= $submenu;
+                $submenu = '';
+                if($vorigmenuItem<>'')
+                    $output .= '</ul></li>';
+                $output .= '<li class="dropdown full-width">
+				<a href="'.$rec['submenuItem'].'" class="dropdown-toggle" >'.$rec['menuItem'].'<b class="caret"></b></a>
+				<ul class="dropdown-menu">';
+                $vorigmenuItem = $rec['menuItem'];
+            }
+            if($rec['volgorde']>-1)
+                $submenu = '<li><a href="'.$rec['menuItem'].'/'.$rec['submenuItem'].'">'.$rec['submenuItem'].'</a></li>'.$submenu;
+        }
+        $output .= $submenu;
+        echo $output;
+    }
+	else
+		echo  'Helaas, geen gegevens gevonden.';
+	?>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>

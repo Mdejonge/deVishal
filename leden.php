@@ -1,7 +1,6 @@
 <!-- Begin navbar -->
   <?php
     require 'header.php';
-    include 'config.php';
   ?>
   <!-- End navbar -->
     <!-- Begin toppage -->
@@ -27,21 +26,19 @@
 
             <ul id="filter">
 			<?php
-				function toon_lid($voornaam, $achternaam, $website) {
-					echo '<li><a href="', $website, '">', $voornaam, ' ', $achternaam, '</a></li>';
-				}
             
-				$query = 'SELECT contact.voornaam, contact.achternaam, lid.website FROM lid INNER JOIN contact ON contact.contactId = lid.contactId ORDER BY contact.achternaam';
-				$result = mysqli_query($conn, $query);
-				if (mysqli_num_rows($result)>0) {
-					while($rec = mysqli_fetch_assoc($result)) {
+				$query = 'SELECT contact.voornaam, contact.achternaam, lid.website 
+                          FROM lid INNER JOIN contact ON contact.contactId = lid.contactId
+                          ORDER BY contact.achternaam';
+				$result = $conn->query($query);
+				if ($result->num_rows > 0) {
+					while($rec = $result->fetch_assoc()) {
 						toon_lid($rec['voornaam'], $rec['achternaam'], $rec['website']);
 					}
 				}
 				else {
 					echo  'Helaas, geen gegevens gevonden.';
 				}
-				mysqli_close($conn);
 			?>
             </ul>
           </div>

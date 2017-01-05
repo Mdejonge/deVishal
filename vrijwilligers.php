@@ -1,7 +1,6 @@
   <!-- Begin navbar -->
   <?php
     require 'header.php';
-    include 'config.php';
   ?>
   <!-- End navbar -->
 
@@ -28,35 +27,20 @@
 
 		<ul id="filter">
 			<?php
-				function toon_vrijwilliger($voornaam, $achternaam, $foto_link, $tekst) {
-					$output = 
-					'<li>
-						<a onclick="toggle_visibility('."'".$voornaam.'_'.$achternaam."'".')">'.$voornaam.' '.$achternaam.'</a>
-						<span id="'.$voornaam.'_'.$achternaam.'">
-							<div class="row">';
-					if(!empty($foto_link)) $output .= 
-								'<div class="col-md-4 description">
-									<img src="'.$foto_link.'" class="img-responsive">
-								</div>';
-					if(!empty($tekst)) $output .=
-								'<div class="col-md-4 description">'.$tekst.'</div>
-							</div>
-						</span>
-					</li>';
-					echo $output;
-				}
 
-				$query = 'SELECT contact.voornaam, contact.achternaam, vrijwilliger.foto_link, vrijwilliger.tekst FROM vrijwilliger INNER JOIN contact ON contact.contactId = vrijwilliger.contactId ORDER BY contact.achternaam';
-				$result = mysqli_query($conn, $query);
-				if (mysqli_num_rows($result)>0) {
-					while($rec = mysqli_fetch_assoc($result)) {
+				$query = 'SELECT contact.voornaam, contact.achternaam, vrijwilliger.foto_link, vrijwilliger.tekst 
+                          FROM vrijwilliger 
+                          INNER JOIN contact ON contact.contactId = vrijwilliger.contactId 
+                          ORDER BY contact.achternaam';
+				$result = $conn->query($query);
+				if ($result->num_rows > 0) {
+					while($rec = $result->fetch_assoc()) {
 						toon_vrijwilliger($rec['voornaam'], $rec['achternaam'], $rec['foto_link'], $rec['tekst']);
 					}
 				}
 				else {
 					echo  'Helaas, geen gegevens gevonden.';
 				}
-				mysqli_close($conn);
 			?>
 		</ul>
           </div>

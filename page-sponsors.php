@@ -1,7 +1,6 @@
   <!-- Begin navbar -->
   <?php
   require 'header.php';
-  include 'config.php';
 
     if (isset($_GET['sponsor_name'])) {
         $sponsor = $_GET['sponsor_name'];
@@ -65,32 +64,23 @@
   <div class="row sponsors">
     <div class='row'>
       <?php
-		function toon_sponsor($naam, $zichtbaar, $foto_link) {
-			$naamtekst;
-			if($zichtbaar=1) {
-				$naamtekst = '<a href="/'.$naam.'"><img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'"></a>';
-			}
-		      else {
-		      	$naamtekst = '<img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'">';
-		      }
-			echo 
-			'<div class="col-sm-3 col-md-3">', 
-				$naamtekst, 
-		      '</div>';
-		}
+		
+        $query = 'SELECT pagina.titel, sponsor.foto_link, pagina.zichtbaar 
+                    FROM sponsor 
+                    LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId 
+                    ORDER BY volgorde';
 
+      $result = $conn->query($query);
 
-		$query = 'SELECT pagina.titel, sponsor.foto_link, pagina.zichtbaar FROM sponsor LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId ORDER BY volgorde';
-		$result = mysqli_query($conn, $query);
-		if (mysqli_num_rows($result)>0) {
-			while($rec = mysqli_fetch_assoc($result)) {
-				toon_sponsor($rec['titel'], $rec['zichtbaar'], $rec['foto_link']);
-			}
-		}
-		else {
-			echo  'Helaas, geen gegevens gevonden.';
-		}
-		mysqli_close($conn);
+      if($result->num_rows > 0){
+          while($rec = $result->fetch_assoc()) {
+              toon_sponsor($rec['titel'], $rec['zichtbaar'], $rec['foto_link']);
+          }
+      }
+      else{
+          echo  'Helaas, geen gegevens gevonden.';
+      }
+      
 	?>
     </div>
   </div>
