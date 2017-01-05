@@ -26,7 +26,7 @@
 		function toon_sponsor($naam, $tekst, $zichtbaar, $foto_link) {
 			$naamtekst = '';
 			if($zichtbaar=1) {
-				$naamtekst = '<a href="/'.$naam.'"><h3>'.$naam.'</h3></a>';
+				$naamtekst = '<a href="Sponsoren/'.$naam.'"><h3>'.$naam.'</h3></a>';
 			}
 		      else {
 		      	$naamtekst = '<h3>'.$naam.'</h3>';

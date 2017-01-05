@@ -1,4 +1,3 @@
-
 <!-- Begin navbar -->
   <?php
     require 'header.php';

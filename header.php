@@ -5,6 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+      <?php
+      if($_SERVER['SERVER_NAME'] == '194.171.20.107')
+      {
+          echo '<base href="/devishal/" />';
+      }
+
+      elseif($_SERVER['SERVER_NAME'] == 'localhost')
+      {
+          echo '<base href="/deVishal/" />';
+      }
+      ?>
     <!-- <meta http-equiv="refresh" content="5" > -->
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>de Vishal</title>
@@ -22,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script src="https://use.fontawesome.com/4bde63513d.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,14 +61,12 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Active Link</a></li>
-					<li><a href="#">Link</a></li>
 
 	<?php
-	$conn = new mysqli('127.0.0.1', 'leesDBacc', 'gesP53aS?bUc', 'devishal');
+	/*$conn = new mysqli('127.0.0.1', 'leesDBacc', 'gesP53aS?bUc', 'devishal');
 	if ($conn->connect_error)
 		die('DB-verbinding mislukt '.$conn->connect_error);
-	mysqli_set_charset($conn,'utf8');
+	mysqli_set_charset($conn,'utf8'); */
 	$query = "SELECT menuItem.naam AS 'menuItem', submenuItem.naam AS 'submenuItem', submenuItem.volgorde FROM menuItem INNER JOIN submenuItem ON submenuItem.menuId = menuItem.menuId ORDER BY menuItem.volgorde, submenuItem.volgorde";
 	$result = mysqli_query($conn, $query);
 	$vorigmenuItem = '';
@@ -64,7 +74,7 @@
 	$submenu = '';
 	if (mysqli_num_rows($result)>0) {
 		while($rec = mysqli_fetch_assoc($result)) {
-			if($vorigmenuItem<>$rec[menuItem]) {
+			if($vorigmenuItem<>$rec['menuItem']) {
 				$output .= $submenu;
 				$submenu = '';
 				if($vorigmenuItem<>'')

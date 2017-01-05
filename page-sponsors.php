@@ -2,6 +2,12 @@
   <?php
   require 'header.php';
   include 'config.php';
+
+    if (isset($_GET['sponsor_name'])) {
+        $sponsor = $_GET['sponsor_name'];
+    }else{
+        $sponsor = 'Error';
+    }
   ?>
   <!-- End navbar -->
 
@@ -12,7 +18,9 @@
     <div class="container">
       <div class="col-md-12">
         <div class="kopje-content">
-          <h4>Paginanaam</h4>
+          <h4>
+              <?=$sponsor ?>
+          </h4>
         </div>
       </div>
     </div>
@@ -22,6 +30,9 @@
   <!-- Begin content -->
   <div class="row content">
     <div class="container">
+
+        <?='<p>'.$sponsor.'</p>' ?>
+
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel consequat metus, sed blandit justo. Pellentesque sed semper tortor, euismod lacinia tortor. Sed ornare est tellus, quis scelerisque ex tincidunt egestas. Vivamus quis fermentum tortor. Nulla sed leo nec arcu eleifend volutpat quis at nibh. Praesent vitae dictum augue. Proin consequat velit quis magna bibendum, a feugiat justo venenatis. Aenean finibus nisi eu faucibus volutpat. Curabitur congue tristique mauris consectetur venenatis. Vestibulum vitae rutrum orci, id tincidunt velit. Donec finibus eget purus ut porta. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec cursus felis ut metus sodales, sed rutrum leo porta. Praesent bibendum mattis lacus.</p>
       <img src="images/dekleinezaal.jpg" class="img-responsive right">
 
