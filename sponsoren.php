@@ -22,11 +22,14 @@
   <div class="row sponsorpage">
     <div class="container">
       <?php
-      
-		$query = 'SELECT pagina.titel, pagina.tekst, sponsor.foto_link, pagina.zichtbaar FROM sponsor LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId ORDER BY volgorde';
-		$result = mysqli_query($conn, $query);
-		if (mysqli_num_rows($result)>0) {
-			while($rec = mysqli_fetch_assoc($result)) {
+
+		$query = 'SELECT pagina.titel, pagina.tekst, sponsor.foto_link, pagina.zichtbaar 
+                  FROM sponsor 
+                  LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId 
+                  ORDER BY volgorde';
+		$result = $conn->query($query);
+		if ($result->num_rows > 0 ) {
+			while($rec = $result->fetch_assoc()) {
 				toon_sponsors($rec['titel'], $rec['tekst'], $rec['zichtbaar'], $rec['foto_link']);
 			}
 		}
