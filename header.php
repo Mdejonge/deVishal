@@ -51,12 +51,12 @@
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+				<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-				</button>
+				</button>-->
 				<a class="navbar-brand" href="#"><img src="images/logo_vishal.png" id="logo"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
