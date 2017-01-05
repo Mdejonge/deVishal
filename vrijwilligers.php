@@ -1,7 +1,6 @@
   <!-- Begin navbar -->
   <?php
     require 'header.php';
-    include 'config.php';
   ?>
   <!-- End navbar -->
 
