@@ -27,7 +27,7 @@ function toon_vrijwilliger($voornaam, $achternaam, $foto_link, $tekst) {
 
 function toon_sponsors($naam, $tekst, $zichtbaar, $foto_link) {
     $naamtekst = '';
-    if($zichtbaar=1) {
+    if($zichtbaar==1) {
         $naamtekst = '<a href="Sponsoren/'.$naam.'"><h3>'.$naam.'</h3></a>';
     }
     else {
@@ -46,7 +46,7 @@ function toon_sponsors($naam, $tekst, $zichtbaar, $foto_link) {
 
 function toon_sponsor($naam, $zichtbaar, $foto_link) {
     $naamtekst = '';
-    if($zichtbaar=1) {
+    if($zichtbaar==1) {
         $naamtekst = '<a href="/'.$naam.'"><img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'"></a>';
     }
     else {
