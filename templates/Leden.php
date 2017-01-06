@@ -1,4 +1,4 @@
-<?php 
+<?php
 	function geef_html($titel, $tekst) {
 		$text2 = '';
 		$text1 = '
@@ -25,6 +25,8 @@
             <input type="text" id="myInput" onkeyup="ledenFilter()" placeholder="Zoeken naar leden...">
 
             <ul id="filter">';
+
+		global $conn;
 		$query = 'SELECT contact.voornaam, contact.achternaam, lid.website 
               FROM lid INNER JOIN contact ON contact.contactId = lid.contactId
               ORDER BY contact.achternaam';

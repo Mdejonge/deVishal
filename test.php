@@ -1,7 +1,7 @@
 <?php
 
 require 'header.php';
-toon_pagina(2);
+toon_pagina(6);
 require 'footer.php';
 
 ?>
