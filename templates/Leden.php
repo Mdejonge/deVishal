@@ -11,7 +11,6 @@
           <div class="kopje-content">
             <h4>'.$titel.'</h4>
           </div>
-          <p>'.$tekst.'</p>
         </div>
       </div>
     </div>
@@ -20,6 +19,7 @@
     <!-- Begin content -->
     <div class="row content">
       <div class="container">
+          <p>'.$tekst.'</p>
         <div class="row">
           <div class="col-md-12 block">
             <input type="text" id="myInput" onkeyup="ledenFilter()" placeholder="Zoeken naar leden...">
