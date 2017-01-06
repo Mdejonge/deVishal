@@ -80,7 +80,13 @@ function toon_pagina($nummer) {
 	$result = $conn->query($query);
 	if ($result->num_rows > 0) {
 		while($rec = $result->fetch_assoc()) {
-			require 'templates/'.$rec['naam'].'.php';
+			if(file_exists('templates/'.$rec['naam'].'.php')) {
+				require 'templates/'.$rec['naam'].'.php';
+			}
+			else {
+				require 'templates/Error.php';
+				//verander titel en tekst naar error iets
+			}
 			geef_html($rec['titel'], $rec['tekst']);
 			if ($rec['sponsorfooter']=1) {
 				include 'sponsors_block.php';
