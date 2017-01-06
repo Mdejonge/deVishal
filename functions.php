@@ -78,9 +78,6 @@ function toon_pagina($nummer) {
 	mysqli_set_charset($conn,'utf8');
 	$query = 'SELECT titel, tekst, sponsorfooter, naam FROM pagina INNER JOIN template ON pagina.templateId = template.templateId WHERE paginaId = '.$nummer;
 	$result = $conn->query($query);
-	$titel = '';
-	$tekst = '';
-	$naam = '';
 	if ($result->num_rows > 0) {
 		while($rec = $result->fetch_assoc()) {
 			require 'templates/'.$rec['naam'].'.php';
