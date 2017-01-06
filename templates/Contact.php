@@ -1,57 +1,30 @@
-<!-- Begin navbar -->
 <?php
-require 'header.php';
-
-    $query = 'SELECT titel, tekst, sponsorfooter, paginaId
-              FROM pagina
-              WHERE paginaId = 5';
-    $result = $conn->query($query);
-    if($result->num_rows > 0){
-        while($rec = $result->fetch_assoc()) { 
-            $titel = $rec['titel'];
-            $content = $rec['tekst'];
-            $footer = $rec['sponsorfooter'];
-            $paginaId = $rec['paginaId'];
-        }
-    }
-    else{
-        $titel = '';
-        $content = '';
-        $footer = '';
-        $paginaId = '';
-    }
-
-
-?>
-<!-- End navbar -->
-
-<!-- Begin toppage -->
-<div class="row toppage">
-</div>
-<div class="row kopjerow">
+function geef_html($titel, $tekst) {
+    echo ' 
+    <!-- Begin toppage -->
+  <div class="row toppage">
+  </div>
+  <div class="row kopjerow">
     <div class="container">
-        <div class="col-md-12">
-            <div class="kopje-content">
-                <h4><?=$titel?></h4>
-                <?php
-                if(isset($_SESSION['gebruikersnaam']) && isset($_SESSION['id'])){
-                    echo '<a href="edit.php?page_id='.$paginaId.'">Edit pagina</a>';
-                }
-                ?>
-            </div>
+      <div class="col-md-12">
+        <div class="kopje-content">
+          <h4>
+              '.$titel.'
+          </h4>
         </div>
+      </div>
     </div>
-</div>
-<!-- End toppage -->
-
-<!-- Begin content -->
-<div class="row content contactrow">
+  </div>
+  <!-- End toppage -->
+ <!-- Begin content -->
+    <div class="row content contactrow">
     <div class="container">
-        <?=$content?>
-    </div>
-</div>
+        <div>'.$tekst.'</div>
+  </div>
+  <!-- End content -->';
 
-<!-- Begin contactform -->
+    echo '
+    <!-- Begin contactform -->
 <form>
     <div class="row contactrow">
         <div class="container">
@@ -101,10 +74,9 @@ require 'header.php';
 <div class="row">
     <div id="map"></div>
 </div>
-<!-- End contactform -->
-
-<?php include('sponsors_block.php'); ?>
-
+<!-- End contactform -->';
+?>
+    
 <script>
     $(document).ready(function() {
         initMap();
@@ -130,4 +102,6 @@ require 'header.php';
     }
 </script>
 
-<?php include('footer.php'); ?>
+<?php
+}
+?>

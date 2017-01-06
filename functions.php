@@ -70,7 +70,7 @@ function toon_bericht($naam, $startdatum, $foto_link) {
 		      </div>';
 }
 
-function toon_pagina($nummer) {
+function toon_pagina($nummer, $tekst = '') {
 	global $conn;
 	if ($conn->connect_error) {
 		die('DB-verbinding mislukt '.$conn->connect_error);
@@ -87,7 +87,11 @@ function toon_pagina($nummer) {
 				require 'templates/Error.php';
 				//verander titel en tekst naar error iets
 			}
-			geef_html($rec['titel'], $rec['tekst']);
+
+            if(empty($tekst))
+			    geef_html($rec['titel'], $rec['tekst']);
+            else
+                geef_html($rec['titel'], $tekst);
 			if ($rec['sponsorfooter']=1) {
 				include 'sponsors_block.php';
 			}

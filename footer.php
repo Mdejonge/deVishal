@@ -55,4 +55,7 @@
         &copy; 2016 Copyright. De vishal
       </div>
     </div>
+</body>
+</html>
+
 <!-- End footer -->
