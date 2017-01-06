@@ -83,9 +83,8 @@ function toon_pagina($nummer) {
 	$naam = '';
 	if ($result->num_rows > 0) {
 		while($rec = $result->fetch_assoc()) {
-			$titel = $rec['titel'];
-			$tekst = $rec['tekst'];
-			$naam = $rec['naam'];
+			require 'templates/'.$rec['naam'].'.php';
+			geef_html($rec['titel'], $rec['tekst']);
 			if ($rec['sponsorfooter']=1) {
 				include 'sponsors_block.php';
 			}
@@ -94,8 +93,6 @@ function toon_pagina($nummer) {
 	else {
 		echo  'Helaas, geen gegevens gevonden.';
 	}
-	require 'templates/'.$naam.'.php';
-	geef_html($titel, $tekst);
 	mysqli_close($conn);
 }
 
