@@ -31,7 +31,7 @@
 		$result = $conn->query($query);
 		if ($result->num_rows > 0) {
 			while($rec = $result->fetch_assoc()) {
-				$text2 .= '<li><a href="'.$rec['website'].'" target="_blank">'.$rec['voornaam'].' '.$rec['achternaam'].'</a></li>';
+				$text2 .= toon_lid($rec['voornaam'], $rec['achternaam'], $rec['website']);
 			}
 		}
 		else {
