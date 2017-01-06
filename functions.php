@@ -76,11 +76,16 @@ function toon_pagina($nummer) {
 		die('DB-verbinding mislukt '.$conn->connect_error);
 	}
 	mysqli_set_charset($conn,'utf8');
-	$query = 'SELECT titel, tekst, sponsorfooter, layout FROM pagina INNER JOIN template ON pagina.templateId = template.templateId WHERE paginaId = '.$nummer;
+	$query = 'SELECT titel, tekst, sponsorfooter, naam FROM pagina INNER JOIN template ON pagina.templateId = template.templateId WHERE paginaId = '.$nummer;
 	$result = $conn->query($query);
+	$titel = '';
+	$tekst = '';
+	$naam = '';
 	if ($result->num_rows > 0) {
 		while($rec = $result->fetch_assoc()) {
-			geef_html($rec['titel'], $rec['tekst'], $rec['layout']);
+			$titel = $rec['titel'];
+			$tekst = $rec['tekst'];
+			$naam = $rec['naam'];
 			if ($rec['sponsorfooter']=1) {
 				include 'sponsors_block.php';
 			}
@@ -89,13 +94,9 @@ function toon_pagina($nummer) {
 	else {
 		echo  'Helaas, geen gegevens gevonden.';
 	}
+	require 'templates/'.$naam.'.php';
+	geef_html($titel, $tekst);
 	mysqli_close($conn);
-}
-
-function geef_html($titel, $tekst, $layout) {
-	$layout = str_replace ('\'.$titel.\'', $titel, $layout);
-	$layout = str_replace ('\'.$tekst.\'', $tekst, $layout);
-	echo $layout;
 }
 
 ?>
