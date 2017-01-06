@@ -1,6 +1,10 @@
 <?php
 include_once 'config.php';
 
+function toon_lid($voornaam, $achternaam, $website) {
+    return '<li><a href="'.$website.'" target="_blank">'.$voornaam.' '.$achternaam.'</a></li>';
+}
+
 function toon_vrijwilliger($voornaam, $achternaam, $foto_link, $tekst) {
     $output =
         '<li>
