@@ -2,22 +2,27 @@
 
 function inloggen($username, $wachtwoord, $conn)
 {
-    $sql = "SELECT id, gebruikersnaam, wachtwoord
+    global $conn;
+    if($stmt = $conn->prepare("SELECT id, gebruikersnaam, wachtwoord
             FROM users
-            WHERE gebruikersnaam = '$username'";
+            WHERE gebruikersnaam = ?")) {
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
 
-    $result = mysqli_query($conn, $sql);
+        $result = $stmt->get_result();
 
-    if (mysqli_num_rows($result)>0) {
-        while($rec = mysqli_fetch_assoc($result)) {
-            if($rec['gebruikersnaam'] === $username && $rec['wachtwoord'] === $wachtwoord)
-            {
-                $_SESSION['gebruikersnaam'] = $rec['gebruikersnaam'];
-                $_SESSION['id'] = $rec['id'];
-                return $rec['gebruikersnaam'];
+
+        if (mysqli_num_rows($result)>0) {
+            while($rec = $result->fetch_assoc()) {
+                if($rec['gebruikersnaam'] === $username && $rec['wachtwoord'] === $wachtwoord)
+                {
+                    $_SESSION['gebruikersnaam'] = $rec['gebruikersnaam'];
+                    $_SESSION['id'] = $rec['id'];
+                    return $rec['gebruikersnaam'];
+                }
+                else
+                    return false;
             }
-            else
-                return false;
         }
     }
 
