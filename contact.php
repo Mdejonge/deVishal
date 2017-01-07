@@ -72,7 +72,7 @@ require 'header.php';
             <div class="fb-share-button"
                  data-href="<?=$_SERVER['REQUEST_URI'];?>"
                  data-layout="button_count"
-                 data-size="large">
+                 data-size="large"> 
             </div>
     </div>
 </div>
