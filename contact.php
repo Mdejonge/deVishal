@@ -2,6 +2,14 @@
 <?php
 require 'header.php';
 
+?>
+<meta property="og:url"           content=<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?> />
+<meta property="og:type"          content="website" />
+<meta property="og:title"         content="Contactpagina van De Vishal in Haarlem!" />
+<meta property="og:description"   content="Dit is mijn beschrijving" />
+<meta property="og:image"         content="" />
+<?php
+
     $query = 'SELECT titel, tekst, sponsorfooter, paginaId
               FROM pagina
               WHERE paginaId = 5';
@@ -48,6 +56,23 @@ require 'header.php';
 <div class="row content contactrow">
     <div class="container">
         <?=$content?>
+
+            <!-- Load Facebook SDK for JavaScript -->
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+
+            <!-- Your share button code -->
+            <div class="fb-share-button"
+                 data-href="<?=$_SERVER['REQUEST_URI'];?>"
+                 data-layout="button_count">
+            </div>
     </div>
 </div>
 
