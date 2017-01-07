@@ -27,8 +27,22 @@ if(isset($_GET['com']))
     <!-- Begin content -->
     <div class="row content">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12 block">
+          <!--<div class="col-md-4 left">
+              <h5>Adres</h5>
+          </div>
+
+          <div class="center col-md-4">
+              <h5>De Vishal</h5>
+
+          </div>
+
+          <div class="col-md-4 right">
+              <h5>Openingstijden</h5>
+          </div> -->
+
+
+          <div class="row">
+          <div class="col-md-4">
               <?php
 
               if(logged_in())
@@ -59,7 +73,7 @@ if(isset($_GET['com']))
                   <form action="<?=htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                       <div class="row contactrow">
                           <div class="container">
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                   <div class="formcontact">
                                       <div class="form-group">
                                           <label for="name">Gebruikersnaam:</label>
