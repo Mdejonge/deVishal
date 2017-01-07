@@ -6,7 +6,7 @@ if(isset($_GET['page_id'])){
     $page_id = $_GET['page_id'];
 }
 
-$query = 'SELECT titel, tekst, sponsorfooter
+$query = 'SELECT titel, tekst, sponsorfooter, zichtbaar
               FROM pagina
               WHERE paginaId = '.$page_id;
 $result = $conn->query($query);
@@ -15,17 +15,21 @@ if($result->num_rows > 0){
         $titel = $rec['titel'];
         $content = $rec['tekst'];
         $footer = $rec['sponsorfooter'];
+        $zichtbaar = $rec['zichtbaar'];
     }
 }
 else{
     $titel = '';
     $content = '';
     $footer = '';
+    $zichtbaar = '';
 }
 
 
 ?>
 <!-- End navbar -->
+
+<form target="_blank">
 
 <!-- Begin toppage -->
 <div class="row toppage">
@@ -34,7 +38,7 @@ else{
     <div class="container">
         <div class="col-md-12">
             <div class="kopje-content">
-                <h4><?=$titel?></h4>
+                <h4><input type="text" name="title" value="<?=$titel?>" title="Aanpassen van de titel" /></h4>
                 
             </div>
         </div>
@@ -46,31 +50,33 @@ else{
 <div class="row content">
     <div class="container" id="replaceable">
         <script src="ckeditor/ckeditor.js"></script>
+        <input type="hidden" name="page_id" value="<?=$page_id?>" />
+        <textarea name="editor1" id="editor1" rows="10" cols="80">
+            <?php echo  $content; ?>
+        </textarea>
 
-        <form target="_blank">
-            <input type="hidden" name="page_id" value="<?=$page_id?>" />
-            <textarea name="editor1" id="editor1" rows="10" cols="80">
-                <?php echo  $content; ?>
-            </textarea>
-            <input type="submit" id="preview" value="Preview" formaction="preview.php" formmethod="post">
-            <input type="submit" id="save" value="Opslaan" formaction="edit-save.php">
-            <p>Todo: Zorgen dat plaatjes geüpload worden<br />
-            Aangeven of sponsorenbalk weergegeven moet worden <br />
-            Titel kunnen veranderen<br />
-            Zichtbaarheid aan kunnen vinken</p>
-            <script>
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace( 'editor1' );
-            </script>
-        </form>
+        <label for="sponsor">Sponsoren weergeven?</label>
+        <input type="checkbox" name="sponsor" id="sponsor" <?php if($footer){ echo 'checked'; }?> />
 
+        <input type="submit" id="preview" value="Preview" formaction="preview.php" formmethod="post">
+        <input type="submit" id="save" value="Opslaan" formaction="edit-save.php"> <br />
+
+        <label for="zichtbaar">Moet de pagina zichtbaar zijn?</label>
+        <input type="checkbox" name="zichtbaar" id="zichtbaar" <?php if($zichtbaar){ echo 'checked'; }?> />
+        <p>Todo: Zorgen dat plaatjes geüpload worden<br />
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace( 'editor1' );
+        </script>
     </div>
 </div>
 <!-- End content -->
 
+</form>
+
 <!-- Begin sponsors -->
-<div class="row kopjerow">
+<!--<div class="row kopjerow">
     <div class="container">
         <div class="col-md-12">
             <div class="kopje-sponsors">

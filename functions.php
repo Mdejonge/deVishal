@@ -70,7 +70,7 @@ function toon_bericht($naam, $startdatum, $foto_link) {
 		      </div>';
 }
 
-function toon_pagina($nummer, $tekst = '') {
+function toon_pagina($nummer, $tekst = '', $sponsorfooter = NULL, $titel = '') {
 	global $conn;
 	if ($conn->connect_error) {
 		die('DB-verbinding mislukt '.$conn->connect_error);
@@ -91,10 +91,17 @@ function toon_pagina($nummer, $tekst = '') {
             if(empty($tekst))
 			    geef_html($rec['titel'], $rec['tekst']);
             else
-                geef_html($rec['titel'], $tekst);
-			if ($rec['sponsorfooter']=1) {
-				include 'sponsors_block.php';
-			}
+                geef_html($titel, $tekst);
+
+            if(!isset($sponsorfooter))
+            {
+                if ($rec['sponsorfooter'] == 1)
+                    include 'sponsors_block.php';
+            }
+            else{
+                if($sponsorfooter == 1)
+                    include 'sponsors_block.php';
+            }
 		}
 	}
 	else {
