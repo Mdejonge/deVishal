@@ -18,6 +18,8 @@ function inloggen($username, $wachtwoord, $conn)
                 {
                     $_SESSION['gebruikersnaam'] = $rec['gebruikersnaam'];
                     $_SESSION['id'] = $rec['id'];
+                    // Sessie beïndigen na 60 min inactiviteit
+                    $_SESSION['discard_after'] = time() + 3600;
                     return $rec['gebruikersnaam'];
                 }
                 else
@@ -27,12 +29,6 @@ function inloggen($username, $wachtwoord, $conn)
     }
 
     return false;
-}
-
-function uitloggen()
-{
-    unset($_SESSION['gebruikersnaam']);
-    unset($_SESSION['id']);
 }
 
 ?>

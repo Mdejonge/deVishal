@@ -31,7 +31,7 @@ if(isset($_GET['com']))
           <div class="col-md-12 block">
               <?php
 
-              if(isset($_SESSION['gebruikersnaam']) && isset($_SESSION['id']))
+              if(logged_in())
               {
                   echo 'u bent ingelogd';
                   // TODO: Pagina voor admin maken

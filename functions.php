@@ -110,4 +110,28 @@ function toon_pagina($nummer, $tekst = '', $sponsorfooter = NULL, $titel = '') {
 	mysqli_close($conn);
 }
 
+function logged_in() {
+    if(isset($_SESSION['gebruikersnaam']) && isset($_SESSION['id'])) {
+        if(time() > $_SESSION['discard_after']){
+            uitloggen();
+            return false;
+        }
+        else{
+            // Nieuwe eindtijd sessie, 60 minuten
+            $_SESSION['discard_after'] = time() + 3600;
+            return true;
+        }
+    }
+    else
+        return false;
+}
+
+function uitloggen()
+{
+    unset($_SESSION['gebruikersnaam']);
+    unset($_SESSION['id']);
+    unset($_SESSION['discard_after']);
+    session_destroy();
+}
+
 ?>
