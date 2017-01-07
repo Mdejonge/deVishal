@@ -50,19 +50,29 @@ else{
 <div class="row content">
     <div class="container" id="replaceable">
         <script src="ckeditor/ckeditor.js"></script>
-        <input type="hidden" name="page_id" value="<?=$page_id?>" />
-        <textarea name="editor1" id="editor1" rows="10" cols="80">
+        
+        <textarea name="editor1" id="editor1" rows="10" cols="80" title="Editor om aan te passen">
             <?php echo  $content; ?>
         </textarea>
 
-        <label for="sponsor">Sponsoren weergeven?</label>
-        <input type="checkbox" name="sponsor" id="sponsor" <?php if($footer){ echo 'checked'; }?> />
+        <div class="form-group">
+            <div class="input-group">
+                <input type="hidden" name="page_id" value="<?=$page_id?>" />
 
-        <input type="submit" id="preview" value="Preview" formaction="preview.php" formmethod="post">
-        <input type="submit" id="save" value="Opslaan" formaction="edit-save.php"> <br />
+                <label for="sponsor">Sponsoren weergeven?</label>
+                <input type="checkbox" name="sponsor" id="sponsor" <?php if($footer){ echo 'checked'; }?> /> <br />
 
-        <label for="zichtbaar">Moet de pagina zichtbaar zijn?</label>
-        <input type="checkbox" name="zichtbaar" id="zichtbaar" <?php if($zichtbaar){ echo 'checked'; }?> />
+                <label for="zichtbaar">Moet de pagina zichtbaar zijn?</label>
+                <input type="checkbox" name="zichtbaar" id="zichtbaar" <?php if($zichtbaar){ echo 'checked'; }?> />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <input type="submit" id="preview" value="Preview" formaction="preview.php" formmethod="post" class="btn btn-info">
+                <input type="submit" id="save" value="Opslaan" formaction="edit-save.php" class="btn btn-info">
+            </div>
+        </div>
         <p>Todo: Zorgen dat plaatjes geüpload worden<br />
         <script>
             // Replace the <textarea id="editor1"> with a CKEditor

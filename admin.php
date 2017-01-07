@@ -73,7 +73,8 @@ if(isset($_GET['com']))
                   <form action="<?=htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                       <div class="row contactrow">
                           <div class="container">
-                              <div class="col-md-4">
+                              <div class="col-md-4
+                              ">
                                   <div class="formcontact">
                                       <div class="form-group">
                                           <label for="name">Gebruikersnaam:</label>
