@@ -43,10 +43,24 @@ if(isset($_GET['com']))
           <div class="row">
           <div class="col-md-4 replaceable">
               <?php
-                echo print_r($_SESSION);
               if(logged_in())
               {
-                  echo 'Welcome';
+                  echo 'Welcome ' . $_SESSION['gebruikersnaam'];
+                  ?>
+                  <ul>
+                      <li>Menu-items veranderen</li>
+                      <li>Menu-items toevoegen/verwijderen</li>
+                      <li>SubMenu-items veranderen</li>
+                      <li>SubMenu-items toevoegen/verwijderen</li>
+                      <li>Pagina's toevoegen/verwijderen</li>
+                      <li>sponsoren / leden / vrijwilligers toevoegen / verwijderen</li>
+
+                      <li>Alle aanpaspagina's - Alleen toegang wanneer ingelogd</li>
+                      <li>Alle andere pagina's - Optie voor bewerken weergeven</li>
+                      <li>Zorgen voor de foto's dat deze geupload kunnen worden</li>
+
+                  </ul>
+                  <?php
               }
               else
               {
@@ -106,13 +120,12 @@ include_once 'footer.php'
                     url: 'authenticatie.php',
                     data: $('form').serialize() + "&command=inloggen",
                     success: function (data) {
-                        /*if (~data.indexOf("error")){
+                        if (~data.indexOf("error")){
                             alert(data);
                         }
                         else {
                             $(".replaceable").html(data);
-                        }*/
-                        alert(data);
+                        }
                     }
                 });
         });
