@@ -1,6 +1,5 @@
 <?php
 require 'header.php';
-include_once 'authenticatie.php';
 
 if(isset($_GET['com']))
 {
@@ -8,6 +7,7 @@ if(isset($_GET['com']))
         uitloggen();
     }
 }
+
 ?>
 
 <!-- Begin toppage -->
@@ -40,37 +40,18 @@ if(isset($_GET['com']))
               <h5>Openingstijden</h5>
           </div> -->
 
-
           <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 replaceable">
               <?php
-
+                echo print_r($_SESSION);
               if(logged_in())
               {
-                  echo 'u bent ingelogd';
-                  // TODO: Pagina voor admin maken
+                  echo 'Welcome';
               }
               else
               {
-                  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                      function test_input($data) {
-                          $data = trim($data);
-                          $data = stripslashes($data);
-                          $data = htmlspecialchars($data);
-                          return $data;
-                      }
-
-                      $username = test_input($_POST["name"]);
-                      $password = test_input($_POST["password"]);
-
-                      if(inloggen($username, $password, $conn)){
-                          echo '<meta http-equiv="refresh" content="0">';
-                          exit();
-                      }
-                  }
-
                   ?>
-                  <form action="<?=htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                  <form method="post" action="authenticatie.php">
                       <div class="row contactrow">
                           <div class="container">
                               <div class="col-md-4
@@ -115,5 +96,25 @@ include_once 'footer.php'
 ?>
 <!-- End footer -->
 
-</body>
-</html>
+<script>
+    $(function () {
+        $('form').on('submit', function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'post',
+                    url: 'authenticatie.php',
+                    data: $('form').serialize() + "&command=inloggen",
+                    success: function (data) {
+                        /*if (~data.indexOf("error")){
+                            alert(data);
+                        }
+                        else {
+                            $(".replaceable").html(data);
+                        }*/
+                        alert(data);
+                    }
+                });
+        });
+    });
+</script>

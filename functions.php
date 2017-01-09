@@ -118,7 +118,7 @@ function logged_in() {
         }
         else{
             // Nieuwe eindtijd sessie, 60 minuten
-            $_SESSION['discard_after'] = time() + 3600;
+            $_SESSION['discard_after'] = time() + 1200;
             return true;
         }
     }
