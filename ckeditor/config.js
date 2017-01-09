@@ -9,8 +9,8 @@ CKEDITOR.editorConfig = function( config ) {
 	// The configuration options below are needed when running CKEditor from source files.
 	config.plugins = 'dialogui,dialog,about,a11yhelp,dialogadvtab,basicstyles,bidi,blockquote,clipboard,button,panelbutton,panel,floatpanel,colorbutton,colordialog,templates,menu,contextmenu,copyformatting,div,resize,toolbar,elementspath,enterkey,entities,popup,filebrowser,find,fakeobjects,flash,floatingspace,listblock,richcombo,font,forms,format,horizontalrule,htmlwriter,iframe,wysiwygarea,image,indent,indentblock,indentlist,smiley,justify,menubutton,language,link,list,liststyle,magicline,maximize,newpage,pagebreak,pastetext,pastefromword,preview,print,removeformat,save,selectall,showblocks,showborders,sourcearea,specialchar,scayt,stylescombo,tab,table,tabletools,undo,wsc,lineutils,widgetselection,widget,filetools,notification,notificationaggregator,uploadwidget,uploadimage';
 	config.skin = 'bootstrapck';
-	config.uploadUrl = '../../uploads/upload.php';
-	config.filebrowserUploadUrl = '../../uploads/upload.php';
+	config.uploadUrl = 'http://localhost:8080/deVishal/uploads/test/upload.php';
+	config.filebrowserUploadUrl = 'http://localhost:8080/deVishal/uploads/test/upload.php';
 	// %REMOVE_END%
 
 	CKEDITOR.editorConfig = function( config ) {
