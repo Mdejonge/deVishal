@@ -1,7 +1,6 @@
 <!-- Begin navbar -->
 <?php
 require 'header.php';
-include 'config.php';
 ?>
 <!-- End navbar -->
 
@@ -34,39 +33,55 @@ include 'config.php';
         </div>
     </div>
 </div>
-<div class="row actueel">
+<?php
+function toon_bericht_links($naam, $korte_inleiding, $foto_link) {
+    echo '<div class="row actueel">
     <div class="container">
         <div class="col-sm-7 col-md-5">
             <img src="images/zeelong.jpeg" class="img-responsive" height="230" width="420">
         </div>
         <div class="col-sm-5 col-md-7">
-            <h4>Zeelong</h4>
-            <p>Maar liefst 54 % van de zuurstof in de lucht wordt geproduceerd door zeewier en algen.</p>
+        <h4>'.$naam.'</h4>
+        <p>'.substr($korte_inleiding, 0, strpos(wordwrap($korte_inleiding, 300), "\n")). " <a href='#'>Lees Verder...</a>".'</p>
         </div>
     </div>
-</div>
-<div class="row actueel">
+  </div>';
+}
+function toon_bericht_rechts($naam, $korte_inleiding, $foto_link) {
+    echo '<div class="row actueel">
     <div class="container">
         <div class="col-sm-5 col-md-push-7">
-            <img src="images/dekleinezaal.jpg" class="img-responsive" height="230" width="420">
-        </div>
-        <div class="col-sm-7 col-md-pull-5">
-            <h4>De Kleine Zaal</h4>
-            <p>Julia Geerlings (1985, Amsterdam) is onafhankelijk curator en schrijver woonachtig in Amsterdam en Parijs.</p>
-        </div>
-    </div>
-</div>
-<div class="row actueel">
-    <div class="container">
-        <div class="col-sm-7 col-md-5">
             <img src="images/zeelong.jpeg" class="img-responsive" height="230" width="420">
         </div>
-        <div class="col-sm-5 col-md-7">
-            <h4>Zeelong</h4>
-            <p>Maar liefst 54 % van de zuurstof in de lucht wordt geproduceerd door zeewier en algen.</p>
+        <div class="col-sm-7 col-md-pull-5">
+        <h4>'.$naam.'</h4>
+        <p>'.substr($korte_inleiding, 0, strpos(wordwrap($korte_inleiding, 300), "\n")). " <a href='#'>Lees Verder...</a>".'</p>
         </div>
     </div>
-</div>
+  </div>';
+}
+$query = 'SELECT pagina.titel, tentoonstelling.korte_inleiding, tentoonstelling.foto_link FROM tentoonstelling, pagina WHERE tentoonstelling.paginaId = pagina.paginaId AND pagina.zichtbaar ORDER BY tentoonstelling.datum_start DESC LIMIT 3';
+$result = mysqli_query($conn, $query);
+if (mysqli_num_rows($result)>0) {
+    $count = 0;
+    while($rec = mysqli_fetch_assoc($result)) {
+        $count++;
+        if($count == 1)
+        {
+            toon_bericht_links($rec['titel'], $rec['korte_inleiding'], $rec['foto_link']);
+        }
+        else {
+            toon_bericht_rechts($rec['titel'], $rec['korte_inleiding'], $rec['foto_link']);
+            $count = 0;
+        }
+
+    }
+}
+else {
+    echo  'Helaas, geen gegevens gevonden.';
+}
+mysqli_close($conn);
+?>
 <!-- End actueel -->
 
 <!-- Begin Instagram -->
@@ -91,92 +106,8 @@ include 'config.php';
 <!-- End Instagram -->
 
 <!-- Begin sponsors -->
-<div class="row kopjerow">
-    <div class="container">
-        <div class="col-md-12">
-            <div class="kopje-sponsors">
-                <h4>Sponsors</h4>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row sponsors">
-    <div class='row'>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor first">
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor">
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor">
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor">
-        </div>
-    </div>
-</div>
+<?php include('sponsors_block.php'); ?>
 <!-- End sponsors -->
-
-<!-- Begin footer -->
-<div class="row footer">
-    <div class="container">
-        <div class="col-md-4 berichten">
-            <h5>Recente Berichten</h5>
-            <div class="row bericht">
-                <a href="#">
-                    <div class="col-xs-5 col-sm-5 col-md-5">
-                        <img src="images/zeelong.jpeg" class="img-responsive">
-                    </div>
-                    <div class="col-xs-7 col-sm-7 col-md-7">
-                        <span>Tentoonstelling Zeelong</span>
-                        <p>01 november 2016</p>
-                    </div>
-                </a>
-            </div>
-            <div class="row bericht">
-                <a href="#">
-                    <div class="col-xs-5 col-sm-5 col-md-5">
-                        <img src="images/zeelong.jpeg" class="img-responsive">
-                    </div>
-                    <div class="col-xs-7 col-sm-7 col-md-7">
-                        <span>Tentoonstelling Zeelong</span>
-                        <p>01 november 2016</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="row nieuwsbrief">
-                <h5>Aanmelden nieuwsbrief</h5>
-                <form class="form-inline">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="nieuwsbrief" placeholder="Email Adres">
-                        <input type="submit" class="form-control" id="aanmelden" value="Aanmelden">
-                    </div>
-                </form>
-            </div>
-            <div class="row social-media">
-                <a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
-            </div>
-        </div>
-        <div class="col-md-4 contact">
-            <h5>Contact</h5>
-            <img src="images/logo_vishal.png" class="img-responsive">
-        <span>
-          De vishal<br>
-          Grote Markt 20<br>
-          2011 RD Haarlem<br>
-          Tel: 023-5326856<br>
-          E-mail: <a href="mailto:de.vishal@gmail.com">de.vishal@gmail.com</a>
-        </div>
-    </div>
-    <div id="copyright">
-        &copy; 2016 Copyright. De vishal
-    </div>
-</div>
-<!-- End footer -->
-</body>
-</html>
+<?php
+include('footer.php');
+?>

@@ -1,7 +1,6 @@
 <!-- Begin navbar -->
   <?php
     require 'header.php';
-    include 'config.php';
   ?>
   <!-- End navbar -->
     <!-- Begin toppage -->
@@ -27,91 +26,29 @@
 
             <ul id="filter">
 			<?php
-				function toon_lid($voornaam, $achternaam, $website) {
-					echo '<li><a href="', $website, '">', $voornaam, ' ', $achternaam, '</a></li>';
-				}
             
-				$query = 'SELECT contact.voornaam, contact.achternaam, lid.website FROM lid INNER JOIN contact ON contact.contactId = lid.contactId ORDER BY contact.achternaam';
-				$result = mysqli_query($conn, $query);
-				if (mysqli_num_rows($result)>0) {
-					while($rec = mysqli_fetch_assoc($result)) {
+				$query = 'SELECT contact.voornaam, contact.achternaam, lid.website 
+                          FROM lid INNER JOIN contact ON contact.contactId = lid.contactId
+                          ORDER BY contact.achternaam';
+				$result = $conn->query($query);
+				if ($result->num_rows > 0) {
+					while($rec = $result->fetch_assoc()) {
 						toon_lid($rec['voornaam'], $rec['achternaam'], $rec['website']);
 					}
 				}
 				else {
 					echo  'Helaas, geen gegevens gevonden.';
 				}
-				mysqli_close($conn);
 			?>
             </ul>
           </div>
         </div>
       </div>
     </div>
-    <div class="push"></div>
   </div>
   <!-- End content -->
 
   <!-- Begin footer -->
-  <div class="row footer">
-    <div class="container">
-      <div class="col-md-4 berichten">
-        <h5>Recente Berichten</h5>
-        <div class="row bericht">
-          <a href="#">
-            <div class="col-xs-5 col-sm-5 col-md-5">
-              <img src="images/zeelong.jpeg" class="img-responsive">
-            </div>
-            <div class="col-xs-7 col-sm-7 col-md-7">
-              <span>Tentoonstelling Zeelong</span>
-              <p>01 november 2016</p>
-            </div>
-          </a>
-        </div>
-        <div class="row bericht">
-          <a href="#">
-            <div class="col-xs-5 col-sm-5 col-md-5">
-              <img src="images/zeelong.jpeg" class="img-responsive">
-            </div>
-            <div class="col-xs-7 col-sm-7 col-md-7">
-              <span>Tentoonstelling Zeelong</span>
-              <p>01 november 2016</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="row nieuwsbrief">
-          <h5>Aanmelden nieuwsbrief</h5>
-          <form class="form-inline">
-            <div class="form-group">
-              <input type="text" class="form-control" id="nieuwsbrief" placeholder="Email Adres">
-              <input type="submit" class="form-control" id="aanmelden" value="Aanmelden">
-            </div>
-          </form>
-        </div>
-        <div class="row social-media">
-          <a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
-        </div>
-      </div>
-      <div class="col-md-4 contact">
-        <h5>Contact</h5>
-        <img src="images/logo_vishal.png" class="img-responsive">
-        <span>
-          De vishal<br>
-          Grote Markt 20<br>
-          2011 RD Haarlem<br>
-          Tel: 023-5326856<br>
-          E-mail: <a href="mailto:de.vishal@gmail.com">de.vishal@gmail.com</a>
-        </div>
-      </div>
-      <div id="copyright">
-        &copy; 2016 Copyright. De vishal
-      </div>
-    </div>
-    <!-- End footer -->
 
     <script>
     function ledenFilter() {
@@ -133,5 +70,5 @@
       }
     }
     </script>
-  </body>
-  </html>
+
+<?php include('footer.php'); ?>

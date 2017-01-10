@@ -1,7 +1,6 @@
   <!-- Begin navbar -->
   <?php
   require 'header.php';
-  include 'config.php';
 
     if (isset($_GET['sponsor_name'])) {
         $sponsor = $_GET['sponsor_name'];
@@ -51,110 +50,6 @@
   </div>
   <!-- End content -->
 
-  <!-- Begin sponsors -->
- 	 
-  <div class="row kopjerow">
-    <div class="container">
-      <div class="col-md-12">
-        <div class="kopje-sponsors">
-          <h4>Sponsors</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row sponsors">
-    <div class='row'>
-      <?php
-		function toon_sponsor($naam, $zichtbaar, $foto_link) {
-			$naamtekst;
-			if($zichtbaar=1) {
-				$naamtekst = '<a href="/'.$naam.'"><img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'"></a>';
-			}
-		      else {
-		      	$naamtekst = '<img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'">';
-		      }
-			echo 
-			'<div class="col-sm-3 col-md-3">', 
-				$naamtekst, 
-		      '</div>';
-		}
+  <?php include('sponsors_block.php'); ?>
 
-
-		$query = 'SELECT pagina.titel, sponsor.foto_link, pagina.zichtbaar FROM sponsor LEFT JOIN pagina ON pagina.paginaId = sponsor.paginaId ORDER BY volgorde';
-		$result = mysqli_query($conn, $query);
-		if (mysqli_num_rows($result)>0) {
-			while($rec = mysqli_fetch_assoc($result)) {
-				toon_sponsor($rec['titel'], $rec['zichtbaar'], $rec['foto_link']);
-			}
-		}
-		else {
-			echo  'Helaas, geen gegevens gevonden.';
-		}
-		mysqli_close($conn);
-	?>
-    </div>
-  </div>
-  <!-- End sponsors -->
-
-  <!-- Begin footer -->
-  <div class="row footer">
-    <div class="container">
-      <div class="col-md-4 berichten">
-        <h5>Recente Berichten</h5>
-        <div class="row bericht">
-          <a href="#">
-            <div class="col-xs-5 col-sm-5 col-md-5">
-              <img src="images/zeelong.jpeg" class="img-responsive">
-            </div>
-            <div class="col-xs-7 col-sm-7 col-md-7">
-              <span>Tentoonstelling Zeelong</span>
-              <p>01 november 2016</p>
-            </div>
-          </a>
-        </div>
-        <div class="row bericht">
-          <a href="#">
-            <div class="col-xs-5 col-sm-5 col-md-5">
-              <img src="images/zeelong.jpeg" class="img-responsive">
-            </div>
-            <div class="col-xs-7 col-sm-7 col-md-7">
-              <span>Tentoonstelling Zeelong</span>
-              <p>01 november 2016</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="row nieuwsbrief">
-          <h5>Aanmelden nieuwsbrief</h5>
-          <form class="form-inline">
-            <div class="form-group">
-              <input type="text" class="form-control" id="nieuwsbrief" placeholder="Email Adres">
-              <input type="submit" class="form-control" id="aanmelden" value="Aanmelden">
-            </div>
-          </form>
-        </div>
-        <div class="row social-media">
-          <a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
-        </div>
-      </div>
-      <div class="col-md-4 contact">
-        <h5>Contact</h5>
-        <img src="images/logo_vishal.png" class="img-responsive">
-        <span>
-          De vishal<br>
-          Grote Markt 20<br>
-          2011 RD Haarlem<br>
-          Tel: 023-5326856<br>
-          E-mail: <a href="mailto:de.vishal@gmail.com">de.vishal@gmail.com</a>
-        </div>
-      </div>
-      <div id="copyright">
-        &copy; 2016 Copyright. De vishal
-      </div>
-    </div>
-    <!-- End footer -->
-  </body>
-  </html>
+  <?php include('footer.php'); ?>

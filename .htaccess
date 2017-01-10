@@ -1,3 +1,4 @@
 RewriteEngine On    # Turn on the rewriting engine
 RewriteRule ^Homepage index.php [NC,L]
+RewriteRule ^Contact contact.php [NC,L]
 RewriteRule ^Sponsoren/([A-Za-z]+)$ page-sponsors.php?sponsor_name=Rabobank [NC,L]    # Handle requests for "Sponsor pages"

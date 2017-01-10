@@ -1,27 +1,34 @@
 <!-- Begin navbar -->
 <?php
 require 'header.php';
-include 'config.php';
 
-$content = '';
-$titel = '';
-$paginaId = '';
-$footer = '';
+?>
+<meta property="og:url"           content=<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?> />
+<meta property="og:type"          content="website" />
+<meta property="og:title"         content="Contactpagina van De Vishal in Haarlem!" />
+<meta property="og:description"   content="Dit is mijn beschrijving" />
+<meta property="og:image"         content="" />
+<?php
 
-$query = 'SELECT titel, tekst, sponsorfooter, paginaId
-          FROM pagina';
-$result = mysqli_query($conn, $query);
-if (mysqli_num_rows($result)>0) {
-    while($rec = mysqli_fetch_assoc($result)) {
-        $titel = $rec['titel'];
-        $content = $rec['tekst'];
-        $footer = $rec['sponsorfooter'];
-        $paginaId = $rec['paginaId'];
+    $query = 'SELECT titel, tekst, sponsorfooter, paginaId
+              FROM pagina
+              WHERE paginaId = 5';
+    $result = $conn->query($query);
+    if($result->num_rows > 0){
+        while($rec = $result->fetch_assoc()) { 
+            $titel = $rec['titel'];
+            $content = $rec['tekst'];
+            $footer = $rec['sponsorfooter'];
+            $paginaId = $rec['paginaId'];
+        }
     }
-}
-else {
-    echo  'Helaas, geen gegevens gevonden.';
-}
+    else{
+        $titel = '';
+        $content = '';
+        $footer = '';
+        $paginaId = '';
+    }
+
 
 ?>
 <!-- End navbar -->
@@ -36,7 +43,7 @@ else {
                 <h4><?=$titel?></h4>
                 <?php
                 if(isset($_SESSION['gebruikersnaam']) && isset($_SESSION['id'])){
-                    echo '<a href="edit.php?'.$paginaId.'">Edit pagina</a>';
+                    echo '<a href="edit.php?page_id='.$paginaId.'">Edit pagina</a>';
                 }
                 ?>
             </div>
@@ -46,7 +53,29 @@ else {
 <!-- End toppage -->
 
 <!-- Begin content -->
-<?=$content?>
+<div class="row content contactrow">
+    <div class="container">
+        <?=$content?>
+
+            <!-- Load Facebook SDK for JavaScript -->
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+
+            <!-- Your share button code -->
+            <div class="fb-share-button"
+                 data-href="<?=$_SERVER['REQUEST_URI'];?>"
+                 data-layout="button_count"
+                 data-size="large"> 
+            </div>
+    </div>
+</div>
 
 <!-- Begin contactform -->
 <form>
@@ -100,95 +129,7 @@ else {
 </div>
 <!-- End contactform -->
 
-<!-- Begin sponsors -->
-<div class="row kopjerow">
-    <div class="container">
-        <div class="col-md-12">
-            <div class="kopje-sponsors">
-                <h4>Sponsors</h4>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row sponsors">
-    <div class='row'>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor first">
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor">
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor">
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor">
-        </div>
-    </div>
-</div>
-<!-- End sponsors -->
-
-<!-- Begin footer -->
-<div class="row footer">
-    <div class="container">
-        <div class="col-md-4 berichten">
-            <h5>Recente Berichten</h5>
-            <div class="row bericht">
-                <a href="#">
-                    <div class="col-xs-5 col-sm-5 col-md-5">
-                        <img src="images/zeelong.jpeg" class="img-responsive">
-                    </div>
-                    <div class="col-xs-7 col-sm-7 col-md-7">
-                        <span>Tentoonstelling Zeelong</span>
-                        <p>01 november 2016</p>
-                    </div>
-                </a>
-            </div>
-            <div class="row bericht">
-                <a href="#">
-                    <div class="col-xs-5 col-sm-5 col-md-5">
-                        <img src="images/zeelong.jpeg" class="img-responsive">
-                    </div>
-                    <div class="col-xs-7 col-sm-7 col-md-7">
-                        <span>Tentoonstelling Zeelong</span>
-                        <p>01 november 2016</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 nieuwsbrieven">
-            <h5>Aanmelden nieuwsbrief</h5>
-            <div class="row nieuwsbrief">
-                <form class="form-inline">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="nieuwsbrief" placeholder="Email Adres">
-                        <input type="submit" class="form-control" id="aanmelden" value="Aanmelden">
-                    </div>
-                </form>
-            </div>
-            <div class="row social-media">
-                <a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
-            </div>
-        </div>
-        <div class="col-md-4 contact">
-            <h5>Contact</h5>
-            <img src="images/logo_vishal.png" class="img-responsive">
-        <span>
-          De vishal<br>
-          Grote Markt 20<br>
-          2011 RD Haarlem<br>
-          Tel: 023-5326856<br>
-          E-mail: <a href="mailto:de.vishal@gmail.com">de.vishal@gmail.com</a>
-        </span>
-        </div>
-    </div>
-    <div id="copyright">
-        &copy; 2016 Copyright. De vishal
-    </div>
-</div>
-<!-- End footer -->
+<?php include('sponsors_block.php'); ?>
 
 <script>
     $(document).ready(function() {
@@ -214,5 +155,5 @@ else {
         });
     }
 </script>
-</body>
-</html>
+
+<?php include('footer.php'); ?>

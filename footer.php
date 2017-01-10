@@ -1,27 +1,20 @@
-﻿<?php include 'config.php'; ?>
 <!-- Begin footer -->
   <div class="row footer">
     <div class="container">
       <div class="col-md-4 berichten">
         <h5>Recente Berichten</h5>
         	<?php
-        	function toon_bericht($naam, $startdatum, $foto_link) {
-			echo '<div class="row bericht">
-		      	<a href="/'.$naam.'">
-		            	<div class="col-xs-5 col-sm-5 col-md-5">
-		              		<img src="/'.$foto_link.'" class="img-responsive">
-		            	</div>
-		            	<div class="col-xs-7 col-sm-7 col-md-7">
-		              		<span>"/'.$naam.'"</span>
-		              		<p>"/'.$startdatum.'"</p>
-		            	</div>
-		            </a>
-		      </div>';
-		}
-        	$query = 'SELECT pagina.titel, tentoonstelling.datum_start, tentoonstelling.foto_link FROM tentoonstelling, pagina WHERE tentoonstelling.paginaId = pagina.paginaId AND pagina.zichtbaar ORDER BY tentoonstelling.datum_start DESC LIMIT 2';
-		$result = mysqli_query($conn, $query);
-		if (mysqli_num_rows($result)>0) {
-			while($rec = mysqli_fetch_assoc($result)) {
+            require 'dbconnect.php';
+
+            $query = 'SELECT pagina.titel, tentoonstelling.datum_start, tentoonstelling.foto_link 
+                      FROM tentoonstelling, pagina 
+                      WHERE tentoonstelling.paginaId = pagina.paginaId 
+                      AND pagina.zichtbaar 
+                      ORDER BY tentoonstelling.datum_start 
+                      DESC LIMIT 2';
+		$result = $conn->query($query);
+		if ($result->num_rows > 0) {
+			while($rec = $result->fetch_assoc()) {
 				toon_bericht($rec['titel'], $rec['datum_start'], $rec['foto_link']);
 			}
 		}
@@ -62,4 +55,7 @@
         &copy; 2016 Copyright. De vishal
       </div>
     </div>
+</body>
+</html>
+
 <!-- End footer -->

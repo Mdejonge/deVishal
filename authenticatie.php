@@ -1,34 +1,46 @@
 <?php
-include 'config.php';
+session_start();
+include_once 'functions.php';
+include_once 'dbconnect.php';
 
-function inloggen($username, $wachtwoord, $conn)
+/*if(isset($_POST['command']) == 'inloggen')
+    echo inloggen($_POST['name'], $_POST['password']);
+else
+    echo 'Zonder geldige command mag je hier niet komen.';
+*/
+
+inloggen($_POST['name'], $_POST['password']);
+function inloggen($username, $wachtwoord)
 {
-    $sql = "SELECT id, gebruikersnaam, wachtwoord
+    global $conn;
+    if($stmt = $conn->prepare("SELECT id, gebruikersnaam, wachtwoord
             FROM users
-            WHERE gebruikersnaam = '$username'";
+            WHERE gebruikersnaam = ?")) {
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
 
-    $result = mysqli_query($conn, $sql);
+        $result = $stmt->get_result();
 
-    if (mysqli_num_rows($result)>0) {
-        while($rec = mysqli_fetch_assoc($result)) {
-            if($rec['gebruikersnaam'] === $username && $rec['wachtwoord'] === $wachtwoord)
-            {
-                $_SESSION['gebruikersnaam'] = $rec['gebruikersnaam'];
-                $_SESSION['id'] = $rec['id'];
-                return $rec['gebruikersnaam'];
+
+        if (mysqli_num_rows($result)>0) {
+            while($rec = $result->fetch_assoc()) {
+                if($rec['gebruikersnaam'] === $username && $rec['wachtwoord'] === $wachtwoord)
+                {
+                    $_SESSION['gebruikersnaam'] = $rec['gebruikersnaam'];
+                    $_SESSION['id'] = $rec['id'];
+                    // Sessie beïndigen na 60 min inactiviteit
+                    $_SESSION['discard_after'] = time() + 1200;
+                    echo 'Welcome user';
+                }
+                else
+                    echo '<div class="error">U heeft geen juiste gebruikersnaam en/of wachtwoord ingevoerd, probeer het opnieuw.</div>';
             }
-            else
-                return false;
         }
+        else
+            echo '<div class="error">Deze gebruikersnaam is niet bekend bij ons. Probeer het opnieuw.</div>';
     }
-
-    return false;
-}
-
-function uitloggen()
-{
-    unset($_SESSION['gebruikersnaam']);
-    unset($_SESSION['id']);
+    else
+        echo '<div class="error">Er is iets foutgegaan tijdens het klaarmaken van de statement... '.$stmt->error.'</div>';
 }
 
 ?>
