@@ -1,5 +1,7 @@
 <?php
 
+include 'header.php';
+
 $query = 'SELECT tentoonstelling.datum_start, tentoonstelling.datum_eind, tentoonstelling.korte_inleiding, pagina.titel, locatie.naam FROM tentoonstelling, pagina, locatie WHERE tentoonstelling.paginaId = pagina.paginaId AND pagina.zichtbaar AND tentoonstelling.locatieId = locatie.locatieId AND datum_eind >= CURDATE()';
 $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result)>0)
@@ -19,4 +21,5 @@ function toon_tentoonstelling_agenda($datum_start, $datum_eind, $korte_inleiding
 
 echo '<div class="row"><p><h3>'.$datum_start.' - '.$datum_eind.'<b> '.$titel.'</b> - '.$naam_locatie.'</h3>'.$korte_inleiding. '</div>';
 }
+
 ?>

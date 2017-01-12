@@ -48,6 +48,9 @@ if(isset($_GET['com']))
                   echo 'Welcome ' . $_SESSION['gebruikersnaam'];
                   ?>
                   <ul>
+                      <li><a href="add-page.php">Pagina toevoegen</a></li>
+                  </ul>
+                  <ul>
                       <li>Menu-items veranderen</li>
                       <li>Menu-items toevoegen/verwijderen</li>
                       <li>SubMenu-items veranderen</li>

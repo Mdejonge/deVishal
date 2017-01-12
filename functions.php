@@ -1,5 +1,13 @@
 <?php
-include_once 'config.php';
+require 'config.php';
+
+if(isset($_POST['command']))
+{
+    if($_POST['command'] == 'get_submenuItems'){
+        get_all_free_submenuItems($_POST['test']);
+    }
+    //echo get_all_free_submenuItems($_GET['test']);
+}
 
 function toon_lid($voornaam, $achternaam, $website) {
     return '<li><a href="'.$website.'" target="_blank">'.$voornaam.' '.$achternaam.'</a></li>';
@@ -134,4 +142,51 @@ function uitloggen()
     session_destroy();
 }
 
+function get_all_menuItems() {
+    global $conn;
+    if ($conn->connect_error) {
+        die('DB-verbinding mislukt '.$conn->connect_error);
+    }
+    mysqli_set_charset($conn,'utf8');
+    $query = 'SELECT naam, menuId 
+                  FROM menuItem 
+                  ORDER BY menuItem.volgorde';
+    $result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        $return = '<select id="menu" name="menu">';
+        while($rec = $result->fetch_assoc()) {
+            $return .= '<option value="'.$rec['menuId'].'">'.$rec['naam'].'</option>';
+        }
+        $return .= '</select>';
+        echo $return;
+    }
+    else {
+        echo  'Helaas, geen gegevens gevonden.';
+    }
+    mysqli_close($conn);
+}
+
+function get_all_free_submenuItems($menuId) {
+    require 'dbconnect.php';
+
+    $query = 'SELECT naam, s.submenuId 
+                  FROM submenuitem s
+                    LEFT JOIN pagina p ON s.submenuId = p.submenuId
+                    WHERE p.submenuId IS NULL
+                    AND menuId = '.$menuId.'
+                  ORDER BY volgorde';
+    $result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        $return = '<select id="submenu" name="submenu">';
+        while($rec = $result->fetch_assoc()) {
+            $return .= '<option value="'.$rec['submenuId'].'">'.$rec['naam'].'</option>';
+        }
+        $return .= '</select>';
+        echo $return;
+    }
+    else {
+        echo 'Helaas, geen gegevens gevonden.';
+    }
+    mysqli_close($conn);
+}
 ?>
