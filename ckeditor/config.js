@@ -9,8 +9,8 @@ CKEDITOR.editorConfig = function( config ) {
 	// The configuration options below are needed when running CKEditor from source files.
 	config.plugins = 'dialogui,dialog,about,a11yhelp,dialogadvtab,basicstyles,bidi,blockquote,clipboard,button,panelbutton,panel,floatpanel,colorbutton,colordialog,templates,menu,contextmenu,copyformatting,div,resize,toolbar,elementspath,enterkey,entities,popup,filebrowser,find,fakeobjects,flash,floatingspace,listblock,richcombo,font,forms,format,horizontalrule,htmlwriter,iframe,wysiwygarea,image,indent,indentblock,indentlist,smiley,justify,menubutton,language,link,list,liststyle,magicline,maximize,newpage,pagebreak,pastetext,pastefromword,preview,print,removeformat,save,selectall,showblocks,showborders,sourcearea,specialchar,scayt,stylescombo,tab,table,tabletools,undo,wsc,lineutils,widgetselection,widget,filetools,notification,notificationaggregator,uploadwidget,uploadimage';
 	config.skin = 'bootstrapck';
-	config.uploadUrl = 'http://localhost:8080/deVishal/uploads/test/upload.php';
-	config.filebrowserUploadUrl = 'http://localhost:8080/deVishal/uploads/test/upload.php';
+	//config.uploadUrl = 'http://localhost:8080/deVishal/uploads/test/upload.php';
+	//config.filebrowserUploadUrl = 'http://localhost:8080/deVishal/uploads/test/upload.php';
 	// %REMOVE_END%
 
 	CKEDITOR.editorConfig = function( config ) {
@@ -31,12 +31,17 @@ CKEDITOR.editorConfig = function( config ) {
 			{ name: 'others', groups: [ 'others' ] },
 			{ name: 'about', groups: [ 'about' ] }
 		];
-
-
 	};
 
+	config.filebrowserBrowseUrl = 'http://localhost:8080/deVishal/kcfinder/browse.php?opener=ckeditor&type=files';
+	config.filebrowserImageBrowseUrl = 'http://localhost:8080/deVishal/kcfinder/browse.php?opener=ckeditor&type=images';
+	config.filebrowserFlashBrowseUrl = 'http://localhost:8080/deVishal/kcfinder/browse.php?opener=ckeditor&type=flash';
+	config.filebrowserUploadUrl = 'http://localhost:8080/deVishal/kcfinder/upload.php?opener=ckeditor&type=files';
+	config.filebrowserImageUploadUrl = 'http://localhost:8080/deVishal/kcfinder/upload.php?opener=ckeditor&type=images';
+	config.filebrowserFlashUploadUrl = 'http://localhost:8080/deVishal/kcfinder/upload.php?opener=ckeditor&type=flash';
+
 	// Image -> Om foto te uploaden. Eruit halen wanneer verder gaans
-	config.removeButtons = 'Image,NewPage,Templates,TextField,Textarea,Select,Button,ImageButton,HiddenField,CopyFormatting,RemoveFormat,BidiLtr,BidiRtl,Language,Flash,PageBreak,Iframe';
+	config.removeButtons = 'NewPage,Templates,TextField,Textarea,Select,Button,ImageButton,HiddenField,CopyFormatting,RemoveFormat,BidiLtr,BidiRtl,Language,Flash,PageBreak,Iframe';
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
