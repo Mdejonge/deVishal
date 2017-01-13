@@ -14,7 +14,7 @@ function inloggen($username, $wachtwoord)
 {
     global $conn;
     if($stmt = $conn->prepare("SELECT id, gebruikersnaam, wachtwoord
-            FROM users
+            FROM user
             WHERE gebruikersnaam = ?")) {
         $stmt->bind_param("s", $username);
         $stmt->execute();

@@ -58,6 +58,7 @@ else{
         <div class="form-group">
             <div class="input-group">
                 <input type="hidden" name="page_id" value="<?=$page_id?>" />
+                <input type="hidden" name="command" value="edit" />
 
                 <label for="sponsor">Sponsoren weergeven?</label>
                 <input type="checkbox" name="sponsor" id="sponsor" <?php if($footer){ echo 'checked'; }?> /> <br />
@@ -70,7 +71,7 @@ else{
         <div class="form-group">
             <div class="input-group">
                 <input type="submit" id="preview" value="Preview" formaction="preview.php" formmethod="post" class="btn btn-info">
-                <input type="submit" id="save" value="Opslaan" formaction="edit-save.php" class="btn btn-info">
+                <input type="submit" id="save" value="Opslaan" formaction="save-page.php" class="btn btn-info">
             </div>
         </div>
         <p>Todo: Zorgen dat plaatjes geüpload worden<br />

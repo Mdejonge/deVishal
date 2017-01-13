@@ -17,7 +17,7 @@ elseif($_SERVER['SERVER_NAME'] == 'localhost')
 
     define("HOST", '127.0.0.1');
     define("USER", 'root');
-    define("PASSWORD", 'usbw');
+    define("PASSWORD", '');
     define("DATABASE", 'devishal');
 
     // De link die staat na localhost:8080/ Bij mij staat er bijv localhost:8080/deVishal/index.php, dan moet je het

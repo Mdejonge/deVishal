@@ -153,7 +153,7 @@ function get_all_menuItems() {
                   ORDER BY menuItem.volgorde';
     $result = $conn->query($query);
     if ($result->num_rows > 0) {
-        $return = '<select id="menu" name="menu">';
+        $return = '<select id="menu" name="menu"><option></option>';
         while($rec = $result->fetch_assoc()) {
             $return .= '<option value="'.$rec['menuId'].'">'.$rec['naam'].'</option>';
         }
