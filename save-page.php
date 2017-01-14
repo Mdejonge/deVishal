@@ -34,6 +34,8 @@ if($command == 'edit')
         echo "Opslaan mislukt :(... " . $stmt->error;
 }
 elseif($command == 'add'){
+    echo print_r($_POST);
+    exit();
     if(!isset($_POST['homepage']))
         $homepage = 0;
     else
@@ -51,7 +53,30 @@ elseif($command == 'add'){
 
     if($stmt->execute() === TRUE)
     {
-        echo "Opslaan gelukt!";
+        $echo = "Opslaan eerste gelukt!";
+
+        if($_POST['page'] == 'tentoonstelling'){
+            $startDate = date('Y-m-d', strtotime($_POST['startDate']));
+            $endDate = date('Y-m-d', strtotime($_POST['endDate']));
+            $locationId = 1;
+
+            $page_id = $stmt->insert_id;
+            $stmt->close();
+
+            $stmt = $conn->prepare("INSERT INTO tentoonstelling
+                                (datum_start, datum_eind, homepage, locatieId, korte_inleiding, paginaId)
+                                VALUES(?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssiisi", $startDate, $endDate, $zichtbaar, $locationId, $_POST['korte_inleiding'], $page_id);
+
+            if($stmt->execute() === TRUE)
+            {
+                $echo .= "\n Opslaan tweede gelukt";
+            }
+            else
+                $echo .= "Opslaan mislukt van tweede" . $stmt->error;
+        }
+
+        echo $echo;
     }
     else
         echo "Opslaan mislukt :(... " . $stmt->error;

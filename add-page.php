@@ -36,15 +36,23 @@ require 'header.php';
             <option value="5">Vrijwilligers toevoegen</option>
         </select>
 
-        <div id="tentoonstelling" style="display: none;" >
-            <form method="post">
-                <h4><input type="text" name="title" value="" placeholder="Vul de titel in..." title="Aanpassen van de titel" /></h4>
+        <div id="tentoonstelling" class="add_pages" style="display: none;" >
+            <form method="post" id="form">
+                <h4><input type="text" name="title" placeholder="Vul de titel in..." title="Aanpassen van de titel" /></h4>
 
-                            <textarea name="editor1" id="editor1" rows="10" cols="80" title="Editor om aan te passen">Vul hier uw tekst in en plaats foto's voor uw nieuwe pagina met betrekking tot tentoonstellingen!
-                            </textarea>
+                <textarea name="editor1" id="editor1" rows="10" cols="80" title="Editor om toe te voegen">Vul hier uw tekst in en plaats foto's voor uw nieuwe pagina met betrekking tot tentoonstellingen!
+                </textarea>
 
                 <table style="white-space: nowrap;">
                     <tbody>
+                    <tr>
+                        <td><label for="startDate">Welke datum start de tentoonstelling?</label></td>
+                        <td><input type="date" name="startDate" id="startDate" placeholder="dd-mm-jjjj" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="endDate">Welke datum eindigt de tentoonstelling?</label></td>
+                        <td><input type="date" name="endDate" id="endDate" placeholder="dd-mm-jjjj" /></td>
+                    </tr>
                     <tr>
                         <td><label for="sponsor">Sponsoren weergeven aan de onderkant?</label></td>
                         <td><input type="checkbox" name="sponsor" id="sponsor" /></td>
@@ -80,11 +88,18 @@ require 'header.php';
                         </td>
                     </tr>
                     </tbody>
+                    <tbody id="homepageHide">
+                        <tr>
+                            <td><label for="korte_inleiding">Schrijf een korte inleiding voor op de homepage</label></td>
+                            <td><textarea name="korte_inleiding" id="korte_inleiding"></textarea></td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 <div class="form-group">
                     <div class="input-group">
                         <input type="hidden" name="templateId" value="" id="templateId" />
+                        <input type="hidden" name="page" value="tentoonstelling" id="page" />
                         <!--<input type="submit" id="preview" value="Preview" formaction="preview.php" formmethod="post" class="btn btn-info">-->
                         <input type="submit" id="save" value="Opslaan" formaction="edit-save.php" class="btn btn-info">
                     </div>
@@ -110,33 +125,44 @@ include_once 'footer.php'
 <!-- End footer -->
 
 <script>
-    CKEDITOR.replace( 'editor1' );
     $(function () {
         $("#hide").hide();
+        $("#homepageHide").hide();
 
         $('#zichtbaar').change(function() {
             $("#hide").toggle();
         });
 
+        $('#homepage').change(function() {
+            $("#homepageHide").toggle();
+        });
+
         $("#add_options").on('change', function(){
             switch (this.value) {
                 case '1':
+                    CKEDITOR.replace( 'editor1' );
+                    $('.add_pages').hide();
                     $('#tentoonstelling').show();
                     $('#templateId').val("2");
                     break;
                 case '2':
-                    alert(this.value);
+                    $('.add_pages').hide();
+                    //$('#content').show();
                     $('#templateId').val("2");
+                    //CKEDITOR.replace( 'editor1' );
                     break;
                 case '3':
+                    $('.add_pages').hide();
                     alert(this.value);
                     $('#templateId').val("4");
                     break;
                 case '4':
+                    $('.add_pages').hide();
                     alert(this.value);
                     //$('#templateId').val("3");
                     break;
                 case '5':
+                    $('.add_pages').hide();
                     alert(this.value);
                     //$('#templateId').val("3");
                     break;
@@ -157,8 +183,7 @@ include_once 'footer.php'
             });
         });
 
-
-        $('form').on('submit', function (e) {
+        $('#form').on('submit', function (e) {
             e.preventDefault();
 
             $.ajax({
