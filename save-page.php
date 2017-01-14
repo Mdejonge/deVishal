@@ -34,8 +34,7 @@ if($command == 'edit')
         echo "Opslaan mislukt :(... " . $stmt->error;
 }
 elseif($command == 'add'){
-    echo print_r($_POST);
-    exit();
+    
     if(!isset($_POST['homepage']))
         $homepage = 0;
     else
