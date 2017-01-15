@@ -14,7 +14,7 @@ function inloggen($username, $wachtwoord)
 {
     global $conn;
     if($stmt = $conn->prepare("SELECT id, gebruikersnaam, wachtwoord
-            FROM user
+            FROM `user`
             WHERE gebruikersnaam = ?")) {
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -28,7 +28,7 @@ function inloggen($username, $wachtwoord)
                 {
                     $_SESSION['gebruikersnaam'] = $rec['gebruikersnaam'];
                     $_SESSION['id'] = $rec['id'];
-                    // Sessie beïndigen na 60 min inactiviteit
+                    // Sessie beïndigen na 20 min inactiviteit
                     $_SESSION['discard_after'] = time() + 1200;
                     echo 'Welcome user';
                 }
@@ -40,7 +40,7 @@ function inloggen($username, $wachtwoord)
             echo '<div class="error">Deze gebruikersnaam is niet bekend bij ons. Probeer het opnieuw.</div>';
     }
     else
-        echo '<div class="error">Er is iets foutgegaan tijdens het klaarmaken van de statement... '.$stmt->error.'</div>';
+        echo '<div class="error">Er is iets foutgegaan tijdens het klaarmaken van de statement... '.mysqli_stmt_error($stmt).'</div>';
 }
 
 ?>
