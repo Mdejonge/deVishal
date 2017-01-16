@@ -1,6 +1,5 @@
 <?php
 	function geef_html($titel, $tekst) {
-		$text2 = '';
 		$text1 = '
     <!-- Begin toppage -->
     <div class="row toppage">
@@ -26,19 +25,7 @@
 
             <ul id="filter">';
 
-		global $conn;
-		$query = 'SELECT contact.voornaam, contact.achternaam, lid.website 
-              FROM lid INNER JOIN contact ON contact.contactId = lid.contactId
-              ORDER BY contact.achternaam';
-		$result = $conn->query($query);
-		if ($result->num_rows > 0) {
-			while($rec = $result->fetch_assoc()) {
-				$text2 .= toon_lid($rec['voornaam'], $rec['achternaam'], $rec['website']);
-			}
-		}
-		else {
-			echo  'Helaas, geen gegevens gevonden.';
-		}
+		$text2 = get_all_leden();
 		
 		$text3 = '
             </ul>

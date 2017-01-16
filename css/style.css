@@ -846,6 +846,20 @@ span .row > [class*='description'] {
 
 }
 
+#add_leden tbody tr td {
+    padding: 5px;
+}
+#add_leden{
+    border-collapse: separate;
+}
+
+.remove {
+    cursor: pointer;
+}
+.add_row {
+    cursor: pointer;
+}
+
 /*Sponsor slider*/
 .row .cycle-slideshow{
     margin: 0;

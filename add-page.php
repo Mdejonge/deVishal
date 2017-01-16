@@ -121,12 +121,10 @@ include_once 'footer.php'
                     loadPage('add_pages/add-sponsor.php', "4");
                     break;
                 case '4':
-                    alert(this.value);
-                    //$('#templateId').val("3");
+                    loadPage('add_pages/add-leden.php', "3");
                     break;
                 case '5':
-                    alert(this.value);
-                    //$('#templateId').val("3");
+                    loadPage('add_pages/add-vrijwilligers.php', "3");
                     break;
                 default:
                     alert('Geen juiste keuze...');

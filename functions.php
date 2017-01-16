@@ -210,4 +210,22 @@ function get_all_tentoonstellingPlaces() {
     }
     mysqli_close($conn);
 }
+
+function get_all_leden() {
+    global $conn;
+    $text = '';
+    $query = 'SELECT contact.voornaam, contact.achternaam, lid.website 
+              FROM lid INNER JOIN contact ON contact.contactId = lid.contactId
+              ORDER BY contact.achternaam';
+    $result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        while($rec = $result->fetch_assoc()) {
+            $text .= toon_lid($rec['voornaam'], $rec['achternaam'], $rec['website']);
+        }
+        return $text;
+    }
+    else {
+        return  'Helaas, geen gegevens gevonden.';
+    }
+}
 ?>

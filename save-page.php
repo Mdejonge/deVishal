@@ -135,5 +135,8 @@ elseif($command == 'add'){
     else
         echo "Opslaan mislukt :(... " . $stmt->error;
 }
+elseif($command == 'add_leden'){
+    echo print_r($_POST);
+}
 
 ?>
