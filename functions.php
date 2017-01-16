@@ -168,7 +168,7 @@ function get_all_free_submenuItems($menuId) {
     require 'dbconnect.php';
 
     $query = 'SELECT naam, s.submenuId 
-                  FROM submenuitem s
+                  FROM submenuItem s
                     LEFT JOIN pagina p ON s.submenuId = p.submenuId
                     WHERE p.submenuId IS NULL
                     AND menuId = '.$menuId.'
