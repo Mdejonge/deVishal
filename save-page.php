@@ -24,7 +24,7 @@ if($command == 'edit')
             sponsorfooter = ?
         WHERE paginaId = ?");
 
-    $stmt->bind_param("ssiii", $_POST['editor1'], $_POST['title'], $zichtbaar, $sponsor, $_POST['page_id']);
+    $stmt->bind_param("ssiii", $_POST['editorText'], $_POST['title'], $zichtbaar, $sponsor, $_POST['page_id']);
 
     if($stmt->execute() === TRUE)
     {
@@ -34,7 +34,7 @@ if($command == 'edit')
         echo "Opslaan mislukt :(... " . $stmt->error;
 }
 elseif($command == 'add'){
-    
+
     if(!isset($_POST['homepage']))
         $homepage = 0;
     else
@@ -48,7 +48,42 @@ elseif($command == 'add'){
                             (titel, tekst, zichtbaar, sponsorfooter, submenuId, templateId)
                             VALUES(?, ?, ?, ?, ?, ?)");
 
-    $stmt->bind_param("ssiiii", $_POST['title'], $_POST['editor1'], $zichtbaar, $sponsor, $submenuItemId, $templateId);
+    $stmt->bind_param("ssiiii", $_POST['title'], $_POST['editorText'], $zichtbaar, $sponsor, $submenuItemId, $templateId);
+
+    if($_FILES['image']){
+        $target_file = 'uploads/' . basename($_FILES["image"]["name"]);
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        $uploadOk = 1;
+        // Check if file already exists
+        if (file_exists($target_file)) {
+            echo "Sorry, het bestand bestaat al.";
+            $uploadOk = 0;
+        }
+        // Check file size
+        if ($_FILES["image"]["size"] > 2097152) {
+            echo "Sorry, de foto is te groot (max 2mb).";
+            $uploadOk = 0;
+        }
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+            echo "Sorry, alleen formaten zoals JPG, JPEG, PNG & GIF zijn toegestaan.";
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, de foto is niet geüpload.";
+            exit();
+            // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                echo "Het bestand ". basename( $_FILES["image"]["name"]). " is geüploaded.";
+            } else {
+                echo "Sorry, er heeft zich een fout voorgedaan.";
+                exit();
+            }
+        }
+    }
 
     if($stmt->execute() === TRUE)
     {
@@ -73,6 +108,26 @@ elseif($command == 'add'){
             }
             else
                 $echo .= "Opslaan mislukt van tweede" . $stmt->error;
+        }
+        elseif($_POST['page'] == 'sponsor'){
+            $page_id = $stmt->insert_id;
+            $stmt->close();
+
+            $row = mysqli_query($conn, 'SELECT volgorde, sponsorId FROM sponsor ORDER BY volgorde DESC LIMIT 1');
+            $result = mysqli_fetch_array($row);
+            $volgorde = $result['volgorde'] +1;
+
+            $stmt = $conn->prepare("INSERT INTO sponsor
+                                (foto_link, volgorde, paginaId)
+                                VALUES(?, ?, ?)");
+            $stmt->bind_param("sii", $target_file, $volgorde, $page_id);
+
+            if($stmt->execute() === TRUE)
+            {
+                $echo .= "\nInformatie opgeslagen in Sponsor database";
+            }
+            else
+                $echo .= "Opslaan mislukt van sponsor database" . $stmt->error;
         }
 
         echo $echo;
