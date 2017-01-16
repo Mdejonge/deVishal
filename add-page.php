@@ -170,6 +170,7 @@ include_once 'footer.php'
 
                     var fData = new FormData($("#form")[0]);
                     fData.append('command', 'add');
+                    fData.append('editorText', CKEDITOR.instances.editor1.getData());
 
                     if($('#image').length){
                         fData.append('image', $("input[name=image]")[0].files[0]);

@@ -29,7 +29,7 @@ else{
 ?>
 <!-- End navbar -->
 
-<form target="_blank">
+<form target="_blank" id="form">
 
 <!-- Begin toppage -->
 <div class="row toppage">
@@ -128,10 +128,16 @@ else{
 
             if(link.indexOf("preview") < 0) {
                 e.preventDefault();
+
+                var fData = new FormData($("#form")[0]);
+                fData.append('editorText', CKEDITOR.instances.editor1.getData());
+
                 $.ajax({
                     type: 'post',
                     url: link,
-                    data: $('form').serialize(),
+                    data: fData,
+                    processData: false,
+                    contentType: false,
                     success: function (data) {
                         alert(data);
                     }

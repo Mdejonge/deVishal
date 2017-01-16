@@ -17,6 +17,9 @@ if(isset($_POST['command'])){
 
 if($command == 'edit')
 {
+
+    echo print_r($_POST);
+    exit();
     $stmt = $conn->prepare("UPDATE pagina 
         SET tekst = ?, 
             titel = ?,
@@ -24,7 +27,7 @@ if($command == 'edit')
             sponsorfooter = ?
         WHERE paginaId = ?");
 
-    $stmt->bind_param("ssiii", $_POST['editor1'], $_POST['title'], $zichtbaar, $sponsor, $_POST['page_id']);
+    $stmt->bind_param("ssiii", $_POST['editorText'], $_POST['title'], $zichtbaar, $sponsor, $_POST['page_id']);
 
     if($stmt->execute() === TRUE)
     {
@@ -48,7 +51,7 @@ elseif($command == 'add'){
                             (titel, tekst, zichtbaar, sponsorfooter, submenuId, templateId)
                             VALUES(?, ?, ?, ?, ?, ?)");
 
-    $stmt->bind_param("ssiiii", $_POST['title'], $_POST['editor1'], $zichtbaar, $sponsor, $submenuItemId, $templateId);
+    $stmt->bind_param("ssiiii", $_POST['title'], $_POST['editorText'], $zichtbaar, $sponsor, $submenuItemId, $templateId);
 
     if($_FILES['image']){
         $target_file = 'uploads/' . basename($_FILES["image"]["name"]);
