@@ -304,6 +304,10 @@ html, body {
     cursor: pointer;
 }
 
+.sponsors .span2{
+    margin: 0 20px;
+}
+
 .footer{
   background: #333333;
 }
@@ -831,3 +835,26 @@ span .row > [class*='description'] {
     }
 
 }
+
+/*Sponsor slider*/
+.row .cycle-slideshow{
+    margin: 0;
+}
+.slidecontainer{overflow:hidden;}
+.cycle-slideshow img{width:auto;height:auto;}
+.cycle-slideshow .span2{float:none;}
+
+/*padding tricks
+nb-visible-item X gutter width
+*/
+@media (min-width: 1200px) {
+    .cycle-slideshow{padding-right:180px;}
+}
+@media (min-width: 768px) and (max-width: 1199px)  {
+    .cycle-slideshow{padding-right:120px;}
+}
+
+@media (max-width: 767px) {
+    .cycle-slideshow{padding-right:0px;}
+}
+/*End sponsor slider*/
