@@ -27,10 +27,10 @@
       <div class="col-md-4">
         <div class="row nieuwsbrief">
           <h5>Aanmelden nieuwsbrief</h5>
-          <form class="form-inline">
+          <form class="form-inline" id="newsletter" name="newsletter">
             <div class="form-group">
-              <input type="text" class="form-control" id="nieuwsbrief" placeholder="Email Adres">
-              <input type="submit" class="form-control" id="aanmelden" value="Aanmelden">
+              <input type="email" class="form-control" id="nieuwsbrief" placeholder="Email Adres" name="email">
+              <input type="submit" class="form-control" id="aanmelden" value="Aanmelden" name="newsletter">
             </div>
           </form>
         </div>
@@ -55,6 +55,22 @@
         &copy; 2016 Copyright. De vishal
       </div>
     </div>
+
+<script>
+    $('#newsletter').on('submit', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'post',
+            url: 'registerNewsletter.php',
+            data: $('form').serialize() + "&command=add",
+            success: function (data) {
+                alert(data);
+            }
+        });
+    });
+
+</script>
 </body>
 </html>
 

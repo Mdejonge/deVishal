@@ -369,8 +369,8 @@ html, body {
   border-radius: 0;
   color: white;
   border-bottom: 4px solid transparent;
-  margin-left: 10px;
   right: 0;
+    margin-left: 0;
 }
 
 .footer #aanmelden:hover{
