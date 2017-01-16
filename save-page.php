@@ -52,12 +52,12 @@ elseif($command == 'add'){
 
     if($stmt->execute() === TRUE)
     {
-        $echo = "Opslaan eerste gelukt!";
+        $echo = "Informatie opgeslagen in de Pagina database.";
 
         if($_POST['page'] == 'tentoonstelling'){
             $startDate = date('Y-m-d', strtotime($_POST['startDate']));
             $endDate = date('Y-m-d', strtotime($_POST['endDate']));
-            $locationId = 1;
+            $locationId = $_POST['locatie'];
 
             $page_id = $stmt->insert_id;
             $stmt->close();
@@ -69,7 +69,7 @@ elseif($command == 'add'){
 
             if($stmt->execute() === TRUE)
             {
-                $echo .= "\n Opslaan tweede gelukt";
+                $echo .= "\nInformatie opgeslagen in Tentoonstelling database";
             }
             else
                 $echo .= "Opslaan mislukt van tweede" . $stmt->error;

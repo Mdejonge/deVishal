@@ -189,4 +189,27 @@ function get_all_free_submenuItems($menuId) {
     }
     mysqli_close($conn);
 }
+
+function get_all_tentoonstellingPlaces() {
+    global $conn;
+    if ($conn->connect_error) {
+        die('DB-verbinding mislukt '.$conn->connect_error);
+    }
+    mysqli_set_charset($conn,'utf8');
+    $query = 'SELECT naam, locatieId 
+                  FROM locatie';
+    $result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        $return = '<select id="locatie" name="locatie"><option></option>';
+        while($rec = $result->fetch_assoc()) {
+            $return .= '<option value="'.$rec['locatieId'].'">'.$rec['naam'].'</option>';
+        }
+        $return .= '</select>';
+        echo $return;
+    }
+    else {
+        echo  'Helaas, geen gegevens gevonden.';
+    }
+    mysqli_close($conn);
+}
 ?>

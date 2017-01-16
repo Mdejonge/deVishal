@@ -54,6 +54,12 @@ require 'header.php';
                         <td><input type="date" name="endDate" id="endDate" placeholder="dd-mm-jjjj" /></td>
                     </tr>
                     <tr>
+                        <td><label for="menu">Op welke plaats vindt deze tentoonstelling plaats?</label></td>
+                        <td>
+                            <?php get_all_tentoonstellingPlaces() ?>
+                        </td>
+                    </tr>
+                    <tr>
                         <td><label for="sponsor">Sponsoren weergeven aan de onderkant?</label></td>
                         <td><input type="checkbox" name="sponsor" id="sponsor" /></td>
                     </tr>
