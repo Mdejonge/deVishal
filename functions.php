@@ -56,7 +56,7 @@ function toon_sponsor($naam, $zichtbaar, $foto_link) {
         $naamtekst = '<a href="/'.$naam.'"><img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'"></a>';
     }
     else {
-        $naamtekst = '<img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'">';
+        $naamtekst = '<span class="span2"><img src="'.$foto_link.'" class="img-responsive sponsor" title="'.$naam.'"></span>';
     }
     echo
     '<div class="col-sm-3 col-md-3">',
