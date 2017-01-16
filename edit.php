@@ -74,7 +74,6 @@ else{
                 <input type="submit" id="save" value="Opslaan" formaction="save-page.php" class="btn btn-info">
             </div>
         </div>
-        <p>Todo: Zorgen dat plaatjes geüpload worden<br />
         <script>
             // Replace the <textarea id="editor1"> with a CKEditor
             // instance, using default configuration.
@@ -85,34 +84,6 @@ else{
 <!-- End content -->
 
 </form>
-
-<!-- Begin sponsors -->
-<!--<div class="row kopjerow">
-    <div class="container">
-        <div class="col-md-12">
-            <div class="kopje-sponsors">
-                <h4>Sponsors</h4>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row sponsors">
-    <div class='row'>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor first">
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor">
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor">
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <img src="images/logo-rabobank.png" class="img-responsive sponsor">
-        </div>
-    </div>
-</div>
-<!-- End sponsors -->
 
 <?php include 'footer.php' ?>
 
