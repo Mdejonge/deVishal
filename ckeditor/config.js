@@ -33,13 +33,22 @@ CKEDITOR.editorConfig = function( config ) {
 		];
 	};
 
-	config.filebrowserBrowseUrl = 'http://localhost/deVishal/kcfinder/browse.php?opener=ckeditor&type=files';
-	config.filebrowserImageBrowseUrl = 'http://localhost/deVishal/kcfinder/browse.php?opener=ckeditor&type=images';
-	config.filebrowserFlashBrowseUrl = 'http://localhost/deVishal/kcfinder/browse.php?opener=ckeditor&type=flash';
-	config.filebrowserUploadUrl = 'http://localhost/deVishal/kcfinder/upload.php?opener=ckeditor&type=files';
-	config.filebrowserImageUploadUrl = 'http://localhost/deVishal/kcfinder/upload.php?opener=ckeditor&type=images';
-	config.filebrowserFlashUploadUrl = 'http://localhost/deVishal/kcfinder/upload.php?opener=ckeditor&type=flash';
+	
+	 config.filebrowserBrowseUrl = 'http://localhost/deVishal/kcfinder/browse.php?opener=ckeditor&type=files';
+	 config.filebrowserImageBrowseUrl = 'http://localhost/deVishal/kcfinder/browse.php?opener=ckeditor&type=images';
+	 config.filebrowserFlashBrowseUrl = 'http://localhost/deVishal/kcfinder/browse.php?opener=ckeditor&type=flash';
+	 config.filebrowserUploadUrl = 'http://localhost/deVishal/kcfinder/upload.php?opener=ckeditor&type=files';
+	 config.filebrowserImageUploadUrl = 'http://localhost/deVishal/kcfinder/upload.php?opener=ckeditor&type=images';
+	 config.filebrowserFlashUploadUrl = 'http://localhost/deVishal/kcfinder/upload.php?opener=ckeditor&type=flash';
 
+	/*
+	config.filebrowserBrowseUrl = 'http://194.171.20.107/kcfinder/browse.php?opener=ckeditor&type=files';
+	config.filebrowserImageBrowseUrl = 'http://194.171.20.107/kcfinder/browse.php?opener=ckeditor&type=images';
+	config.filebrowserFlashBrowseUrl = 'http://194.171.20.107/kcfinder/browse.php?opener=ckeditor&type=flash';
+	config.filebrowserUploadUrl = 'http://194.171.20.107/kcfinder/upload.php?opener=ckeditor&type=files';
+	config.filebrowserImageUploadUrl = 'http://194.171.20.107/kcfinder/upload.php?opener=ckeditor&type=images';
+	config.filebrowserFlashUploadUrl = 'http://194.171.20.107/kcfinder/upload.php?opener=ckeditor&type=flash';
+*/
 	// Image -> Om foto te uploaden. Eruit halen wanneer verder gaans
 	config.removeButtons = 'NewPage,Templates,TextField,Textarea,Select,Button,ImageButton,HiddenField,CopyFormatting,RemoveFormat,BidiLtr,BidiRtl,Language,Flash,PageBreak,Iframe';
 	// Define changes to default configuration here. For example:

@@ -7,7 +7,7 @@ if($_SERVER['SERVER_NAME'] == '194.171.20.107')
     define("PASSWORD", 'groep5Password');
     define("DATABASE", 'devishal');
 
-    define("ROOT", '//194.171.20.107/');
+    define("ROOT", 'http://194.171.20.107/');
 }
 
 // DEZE GEGEVENS MOGEN/MOETEN VERANDERD WORDEN NAAR JE EIGEN LOKALE GEGEVENS.
@@ -22,7 +22,7 @@ elseif($_SERVER['SERVER_NAME'] == 'localhost')
 
     // De link die staat na localhost:8080/ Bij mij staat er bijv localhost:8080/deVishal/index.php, dan moet je het
     // stukje wat bij mij /deVishal/ is, hier plaatsen
-    define("ROOT", '/deVishal/');
+    define("ROOT", 'http://localhost/deVishal/');
 }
 
 
