@@ -719,6 +719,12 @@ span .row > [class*='description'] {
   flex-direction: column;
 }
 
+@media screen and (max-width: 768px) {
+    .kopje-actueel, .kopje-instagram, .kopje-sponsors, .kopje-content{
+        width: auto;
+    }
+}
+
 @media screen and (min-width: 768px) {
   .dropdown .dropdown-menu {
     height: 0px;
@@ -794,6 +800,10 @@ span .row > [class*='description'] {
   #filter li span .description .link{
     position: relative;
   }
+
+    .sponsors img{
+        padding: 0 10px;
+    }
 
 }
 

@@ -21,9 +21,9 @@ include('dbconnect.php');
         <script src="http://malsup.github.com/jquery.cycle2.carousel.js"></script>
 
         <div class="slidecontainer">
-            <div class="row cycle-slideshow" data-cycle-fx=carousel data-cycle-timeout=2500 data-cycle-carousel-visible=4 data-cycle-carousel-fluid=true data-cycle-slides="div">
+            <div class="row cycle-slideshow" data-cycle-fx=carousel data-cycle-timeout=4800 data-cycle-speed="400" data-cycle-carousel-visible=4 data-cycle-carousel-fluid=true data-cycle-slides="div">
 
-                <?php
+<?php
 
                 $query = 'SELECT pagina.titel, sponsor.foto_link, pagina.zichtbaar
                     FROM sponsor
@@ -42,6 +42,12 @@ include('dbconnect.php');
                 }
 
                 ?>
+
+<!--                <div class='span2'><img class="img-responsive" src="/devishal/uploads/logo-autorent.png" ></div>-->
+<!--                <div class='span2'><img class="img-responsive" src="/devishal/uploads/logo-autorent.png" ></div>-->
+<!--                <div class='span2'><img class="img-responsive" src="/devishal/uploads/logo-autorent.png" ></div>-->
+<!--                <div class='span2'><img class="img-responsive" src="/devishal/uploads/logo-autorent.png" ></div>-->
+<!--                <div class='span2'><img class="img-responsive" src="/devishal/uploads/logo-rabobank.png" ></div>-->
             </div>
         </div>
 
