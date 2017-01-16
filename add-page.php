@@ -118,8 +118,7 @@ include_once 'footer.php'
                     loadPage('add_pages/add-content.php', "2");
                     break;
                 case '3':
-                    alert(this.value);
-                    //$('#templateId').val("4");
+                    loadPage('add_pages/add-sponsor.php', "4");
                     break;
                 case '4':
                     alert(this.value);
@@ -169,10 +168,19 @@ include_once 'footer.php'
                 $('#form').on('submit', function (e) {
                     e.preventDefault();
 
+                    var fData = new FormData($("#form")[0]);
+                    fData.append('command', 'add');
+
+                    if($('#image').length){
+                        fData.append('image', $("input[name=image]")[0].files[0]);
+                    }
+
                     $.ajax({
                         type: 'post',
                         url: 'save-page.php',
-                        data: $('form').serialize() + "&command=add",
+                        data: fData,
+                        processData: false,
+                        contentType: false,
                         success: function (data) {
                             alert(data);
                         }
