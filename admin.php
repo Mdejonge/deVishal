@@ -50,19 +50,6 @@ if(isset($_GET['com']))
                   <ul>
                       <li><a href="add-page.php">Pagina toevoegen</a></li>
                   </ul>
-                  <ul>
-                      <li>Menu-items veranderen</li>
-                      <li>Menu-items toevoegen/verwijderen</li>
-                      <li>SubMenu-items veranderen</li>
-                      <li>SubMenu-items toevoegen/verwijderen</li>
-                      <li>Pagina's toevoegen/verwijderen</li>
-                      <li>sponsoren / leden / vrijwilligers toevoegen / verwijderen</li>
-
-                      <li>Alle aanpaspagina's - Alleen toegang wanneer ingelogd</li>
-                      <li>Alle andere pagina's - Optie voor bewerken weergeven</li>
-                      <li>Zorgen voor de foto's dat deze geupload kunnen worden</li>
-
-                  </ul>
                   <?php
               }
               else

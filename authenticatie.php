@@ -30,7 +30,10 @@ function inloggen($username, $wachtwoord)
                     $_SESSION['id'] = $rec['id'];
                     // Sessie beïndigen na 20 min inactiviteit
                     $_SESSION['discard_after'] = time() + 1200;
-                    echo 'Welcome user';
+                    echo 'Welcome user' .
+                        '<ul>
+                            <li><a href="add-page.php">Pagina toevoegen</a></li>
+                        </ul>';
                 }
                 else
                     echo '<div class="error">U heeft geen juiste gebruikersnaam en/of wachtwoord ingevoerd, probeer het opnieuw.</div>';
