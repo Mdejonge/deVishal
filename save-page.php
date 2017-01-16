@@ -17,9 +17,6 @@ if(isset($_POST['command'])){
 
 if($command == 'edit')
 {
-
-    echo print_r($_POST);
-    exit();
     $stmt = $conn->prepare("UPDATE pagina 
         SET tekst = ?, 
             titel = ?,
