@@ -41,9 +41,6 @@
   </div>
   <!-- End content -->
 
-  <?
-    require 'footer.php';
+  <?php
+  require 'footer.php';
   ?>
-    <!-- End footer -->
-  </body>
-  </html>
