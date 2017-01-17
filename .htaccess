@@ -13,6 +13,8 @@ RewriteRule ^Actueel/Evenementen agenda.php [NC,L]
 RewriteRule ^Tentoonstellingen/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Kunstenaars/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Wie\ zijn\ wij/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
+
+RewriteRule ^Visschool/Onderwijsportaal http://www.kunsteducatie.net/vishal.html [NC,L]
 RewriteRule ^Visschool/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Archief/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Contact/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
