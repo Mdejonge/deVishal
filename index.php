@@ -38,7 +38,7 @@ function toon_bericht_links($naam, $korte_inleiding, $foto_link) {
     echo '<div class="row actueel">
     <div class="container">
         <div class="col-sm-7 col-md-5">
-            <img src="images/zeelong.jpeg" class="img-responsive" height="230" width="420">
+            <img src="'.$foto_link.'" class="img-responsive" height="230" width="420">
         </div>
         <div class="col-sm-5 col-md-7">
         <h4>'.$naam.'</h4>
@@ -51,7 +51,7 @@ function toon_bericht_rechts($naam, $korte_inleiding, $foto_link) {
     echo '<div class="row actueel">
     <div class="container">
         <div class="col-sm-5 col-md-push-7">
-            <img src="images/zeelong.jpeg" class="img-responsive" height="230" width="420">
+            <img src="'.$foto_link.'" class="img-responsive" height="230" width="420">
         </div>
         <div class="col-sm-7 col-md-pull-5">
         <h4>'.$naam.'</h4>

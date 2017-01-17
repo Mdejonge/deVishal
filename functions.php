@@ -69,10 +69,10 @@ function toon_sponsor($naam, $zichtbaar, $foto_link) {
 
 function toon_bericht($naam, $startdatum, $foto_link) {
     echo '<div class="row bericht">
-		      	<a href="/'.$naam.'">
-		            	<!--<div class="col-xs-5 col-sm-5 col-md-5">
-		              		<img src="/'.$foto_link.'" class="img-responsive">
-		            	</div>-->
+		      	<a href="'.$naam.'">
+		            	<div class="col-xs-5 col-sm-5 col-md-5">
+		              		<img src="'.$foto_link.'" class="img-responsive">
+		            	</div>
 		            	<div class="col-xs-7 col-sm-7 col-md-7">
 		              		<span>'.$naam.'</span>
 		              		<p>'.$startdatum.'</p>
