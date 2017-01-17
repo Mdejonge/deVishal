@@ -43,7 +43,7 @@ require 'header.php';
                 <h4><?=$titel?></h4>
                 <?php
                 if(isset($_SESSION['gebruikersnaam']) && isset($_SESSION['id'])){
-                    echo '<a href="edit.php?page_id='.$paginaId.'">Edit pagina</a>';
+                    echo '<a href="Edit/'.$paginaId.'">Edit pagina</a>';
                 }
                 ?>
             </div>

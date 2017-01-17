@@ -255,4 +255,27 @@ function get_vrijwilligers()
 function isMobile() {
     return preg_match("/(android|webos|avantgo|iphone|ipad|ipod|blackbe‌​rry|iemobile|bolt|bo‌​ost|cricket|docomo|f‌​one|hiptop|mini|oper‌​a mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|‌​webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
+
+function get_page_id($page_name) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT pagina.paginaId
+                            FROM submenuItem 
+                            INNER JOIN pagina 
+                            ON submenuItem.submenuId = pagina.submenuId
+                            WHERE naam = ?');
+
+    $stmt->bind_param("s", $page_name);
+
+    if($stmt->execute() === TRUE){
+        $stmt->bind_result($paginaId);
+        $row = $stmt->fetch();
+        if($paginaId == NULL)
+            return false;
+        else
+            return $paginaId;
+    }
+
+    return false;
+}
 ?>

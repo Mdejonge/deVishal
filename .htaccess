@@ -1,4 +1,22 @@
 RewriteEngine On    # Turn on the rewriting engine
 RewriteRule ^Homepage index.php [NC,L]
-RewriteRule ^Contact contact.php [NC,L]
-RewriteRule ^Sponsoren/([A-Za-z]+)$ page-sponsors.php?sponsor_name=Rabobank [NC,L]    # Handle requests for "Sponsor pages"
+RewriteRule ^Nu\ te\ zien mainpage.php?page_name=Nu+te+zien [NC,L]
+RewriteRule ^Lid\ van\ de\ Vishal mainpage.php?page_name=Lid+van+de+Vishal [NC,L]
+RewriteRule ^Bestuur\ en\ medewerkers mainpage.php?page_name=Bestuur+en+medewerkers [NC,L]
+RewriteRule ^Aanbod\ primair\ onderwijs mainpage.php?page_name=Aanbod+primair+onderwijs [NC,L]
+RewriteRule ^Video's mainpage.php?page_name=Video's [NC,L]
+RewriteRule ^Contact mainpage.php?page_name=Contact [NC,L]
+RewriteRule ^Vriend\ van\ de\ Vishal mainpage.php?page_name=Vriend+van+de+Vishal [NC,L]
+
+RewriteRule ^Tentoonstellingen/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
+RewriteRule ^Kunstenaars/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
+RewriteRule ^Wie\ zijn\ wij/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
+RewriteRule ^Visschool/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
+RewriteRule ^Archief/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
+RewriteRule ^Contact/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
+RewriteRule ^Steun\ ons/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
+
+RewriteRule ^Edit/([0-9])$ edit.php?page_id=$1 [NC,L]
+
+
+RewriteRule ^Sponsoren/([A-Za-z]+)$ page-sponsors.php?sponsor_name=$1 [NC,L]    # Handle requests for "Sponsor pages"
