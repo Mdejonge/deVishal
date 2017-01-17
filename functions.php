@@ -20,15 +20,18 @@ function toon_vrijwilliger($voornaam, $achternaam, $foto_link, $tekst) {
 						<span id="'.$voornaam.'_'.$achternaam.'">
 							<div class="row">';
     if(!empty($foto_link)) $output .=
-        '<div class="col-md-4 description">
+        '<div class="col-md-1 description">
 									<img src="'.$foto_link.'" class="img-responsive">
 								</div>';
     if(!empty($tekst)) $output .=
-        '<div class="col-md-4 description">'.$tekst.'</div>
+        '<div class="col-md-11 description">'.$tekst.'</div>
 							</div>
 						</span>
 					</li>';
-    echo $output;
+    echo $output; ?>
+<?php
+    
+    
 }
 
 function toon_sponsors($naam, $tekst, $zichtbaar, $foto_link) {
