@@ -62,7 +62,7 @@
 	$vorigmenuItem = '';
 	$output = '';
 	$submenu = '';
-    $query = "SELECT menuItem.naam AS 'menuItem', submenuItem.naam AS 'submenuItem', submenuItem.volgorde 
+    $query = "SELECT menuItem.naam AS 'menuItem', submenuItem.naam AS 'submenuItem', submenuItem.volgorde
                               FROM menuItem 
                               INNER JOIN submenuItem ON submenuItem.menuId = menuItem.menuId 
                               ORDER BY menuItem.volgorde, submenuItem.volgorde";
