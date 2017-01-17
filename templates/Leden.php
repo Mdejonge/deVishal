@@ -1,5 +1,5 @@
 <?php
-	function geef_html($titel, $tekst) {
+	function geef_html($titel, $tekst, $paginaId = false) {
 		$text1 = '
     <!-- Begin toppage -->
     <div class="row toppage">
@@ -8,7 +8,13 @@
       <div class="container">
         <div class="col-md-12">
           <div class="kopje-content">
-            <h4>'.$titel.'</h4>
+            <h4>'.$titel.'</h4>';
+
+        if(isset($_SESSION['gebruikersnaam'])&&isset($_SESSION['id'])){
+            $text1 .= '<a href="Edit/'.$paginaId.'">Edit pagina</a>';
+        }
+
+        $text1 .= '
           </div>
         </div>
       </div>
