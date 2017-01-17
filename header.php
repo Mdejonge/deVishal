@@ -42,6 +42,7 @@
     <![endif]-->
   </head>
   <body>
+  <?php include_once("analyticstracking.php") ?>
 
 <div id="navbar">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
