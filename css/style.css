@@ -856,7 +856,7 @@ span .row > [class*='description'] {
 .remove {
     cursor: pointer;
 }
-.add_row {
+#add_row {
     cursor: pointer;
 }
 

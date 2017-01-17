@@ -135,8 +135,43 @@ elseif($command == 'add'){
     else
         echo "Opslaan mislukt :(... " . $stmt->error;
 }
-elseif($command == 'add_leden'){
-    echo print_r($_POST);
+elseif($command == 'add_leden') {
+    $echo = '';
+
+    foreach ($_POST['name'] as $key => $name) {
+        $stmt = $conn->prepare("INSERT INTO contact
+                                (voornaam, achternaam)
+                                VALUES(?, ?)");
+
+        $parts = explode(' ', $name);
+        $voornaam = array_shift($parts);
+        $achternaam = implode(' ', $parts);
+
+        $stmt->bind_param("ss", $voornaam, $achternaam);
+
+        if ($stmt->execute() === TRUE) {
+            $echo .= "Informatie opgeslagen in de contact database.";
+            $contactId = $stmt->insert_id;
+            $stmt->close();
+
+
+        }
+
+        $stmt = $conn->prepare("INSERT INTO lid
+                                (website, contactId)
+                                VALUES(?, ?)");
+        $stmt->bind_param("si", $_POST['webpage'][$key], $contactId);
+
+        if ($stmt->execute() === TRUE) {
+            $echo .= "\nInformatie opgeslagen in de leden database";
+        } else
+            $echo .= "Opslaan mislukt van tweede" . $stmt->error;
+    }
+    echo $echo;
+}
+else
+{
+    echo "Opslaan mislukt :(... " . $stmt->error;
 }
 
 ?>
