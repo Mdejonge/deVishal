@@ -244,7 +244,7 @@ function get_vrijwilligers()
         }
     }
     else {
-        echo  "Helaas, geen gegevens gevonden.";
+        echo  "Helaas, geen gegevens gevonden." ;
     }
     mysqli_close($conn);
 }

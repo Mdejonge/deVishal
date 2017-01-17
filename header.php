@@ -24,6 +24,8 @@
 
     <script src="http://code.jquery.com/jquery-latest.min.js"
             type="text/javascript"></script>
+
+      <script src="js/scripts.js" type="text/javascript"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="" crossorigin="anonymous"></script>
 

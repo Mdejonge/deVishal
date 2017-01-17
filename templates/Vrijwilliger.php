@@ -1,7 +1,6 @@
 <?php
 function geef_html($titel, $tekst)
-{
-    echo '
+{?>
     <!-- Begin toppage -->
     <div class="row toppage">
     </div>
@@ -9,7 +8,7 @@ function geef_html($titel, $tekst)
       <div class="container">
         <div class="col-md-12">
           <div class="kopje-content">
-            <h4>'.$titel.'</h4>
+            <h4><?php echo $titel ?></h4>
           </div>
         </div>
       </div>
@@ -24,51 +23,14 @@ function geef_html($titel, $tekst)
             <input type="text" id="myInput" onkeyup="filter()" placeholder="Zoeken naar vrijwilligers...">
 
 		    <ul id="filter">
-		    '. get_vrijwilligers() .'
+		    <?php echo get_vrijwilligers(); ?>
             </ul>
           </div>
         </div>
       </div>
     </div>
-</div>
-<!-- End content --> ';
+<!-- End content --><?php
 
-    get_filter();
-
-}
-
-function get_filter()
-{
-    echo "
-    <script>
-    function filter() {
-        // Declare variables
-        var input, filter, ul, li, a, i;
-        input = document.getElementById('myInput');
-        filter = input.value.toUpperCase();
-        ul = document.getElementById('filter');
-        li = ul.getElementsByTagName('li');
-
-        // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName('a')[0];
-            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = '';
-            } else {
-                li[i].style.display = 'none';
-            }
-        }
-    }
-
-    function toggle_visibility(id) {
-        var e = document.getElementById(id);
-        if(e.style.display == 'block')
-            e.style.display = 'none';
-        else
-            e.style.display = 'block';
-    }
-
-</script> ";
 }
 
 ?>
