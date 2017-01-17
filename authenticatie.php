@@ -3,14 +3,13 @@ session_start();
 include_once 'functions.php';
 include_once 'dbconnect.php';
 
-/*if(isset($_POST['command']) == 'inloggen')
-    echo inloggen($_POST['name'], $_POST['password']);
+if(!empty($_POST['location']))
+    $location = $_POST['location'];
 else
-    echo 'Zonder geldige command mag je hier niet komen.';
-*/
+    $location = '';
 
-inloggen($_POST['name'], $_POST['password']);
-function inloggen($username, $wachtwoord)
+inloggen($_POST['name'], $_POST['password'], $location);
+function inloggen($username, $wachtwoord, $location = false)
 {
     global $conn;
     if($stmt = $conn->prepare("SELECT id, gebruikersnaam, wachtwoord
@@ -30,6 +29,16 @@ function inloggen($username, $wachtwoord)
                     $_SESSION['id'] = $rec['id'];
                     // Sessie beïndigen na 20 min inactiviteit
                     $_SESSION['discard_after'] = time() + 1200;
+                    if(!empty($location)){
+                        ?>
+                        <script type="text/javascript">
+                            window.location.href = '<?=$_POST['location']?>';
+                        </script>
+                        <?php
+                        echo 'U wordt doorgestuurd naar de pagina waar u was. Even geduld.
+                                U kunt ook <a href="'.$location.'">hier klikken!</a> ';
+                        exit();
+                    }
                     echo 'Welcome user' .
                         '<ul>
                             <li><a href="add-page.php">Pagina toevoegen</a></li>
