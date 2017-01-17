@@ -846,7 +846,7 @@ span .row > [class*='description'] {
 
 }
 
-#add_leden tbody tr td {
+#add_leden tbody tr td, #all_pages tbody tr td, #all_pages thead tr td {
     padding: 5px;
 }
 #add_leden{

@@ -33,7 +33,7 @@ require 'header.php';
             <option value="2">Algemene content-pagina</option>
             <option value="3">Sponsoren-pagina</option>
             <option value="4">Leden toevoegen</option>
-            <option value="5">Vrijwilligers toevoegen</option>
+            <!--<option value="5">Vrijwilligers toevoegen</option>-->
         </select>
 
         <div id="loadcontent" class="add_pages">
