@@ -42,7 +42,7 @@ function toon_bericht_links($naam, $korte_inleiding, $foto_link) {
         </div>
         <div class="col-sm-5 col-md-7">
         <h4>'.$naam.'</h4>
-        <p>'.substr($korte_inleiding, 0, strpos(wordwrap($korte_inleiding, 300), "\n")). " <a href='Tentoonstellingen/".$naam."'>Lees Verder...</a>".'</p>
+        <p>'.substr($korte_inleiding, 0, strpos(wordwrap($korte_inleiding, 300), "\n")). " <a href='Tentoonstelling/".$naam."'>Lees Verder...</a>".'</p>
         </div>
     </div>
   </div>';
