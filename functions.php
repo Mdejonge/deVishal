@@ -69,7 +69,7 @@ function toon_sponsor($naam, $zichtbaar, $foto_link) {
 
 function toon_bericht($naam, $startdatum, $foto_link) {
     echo '<div class="row bericht">
-		      	<a href="'.$naam.'">
+		      	<a href="Tentoonstelling/'.$naam.'">
 		            	<div class="col-xs-5 col-sm-5 col-md-5">
 		              		<img src="'.$foto_link.'" class="img-responsive">
 		            	</div>
@@ -256,11 +256,11 @@ function isMobile() {
     return preg_match("/(android|webos|avantgo|iphone|ipad|ipod|blackbe‌​rry|iemobile|bolt|bo‌​ost|cricket|docomo|f‌​one|hiptop|mini|oper‌​a mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|‌​webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
 
-function get_page_id($page_name, $sponsor=false)
+function get_page_id($page_name, $search_page=false)
 {
     global $conn;
 
-    if ($sponsor) {
+    if ($search_page) {
         $stmt = $conn->prepare('SELECT paginaId
                             FROM pagina 
                             WHERE titel = ?');

@@ -4,7 +4,7 @@ require 'functions.php';
 
 if(isset($_GET['page_name']))
 {
-    if(isset($_GET['sponsor']))
+    if(isset($_GET['search_page']))
         $page_id = get_page_id($_GET['page_name'], true);
     else
         $page_id = get_page_id($_GET['page_name']);
