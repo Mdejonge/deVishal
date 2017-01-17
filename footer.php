@@ -35,9 +35,9 @@
           </form>
         </div>
         <div class="row social-media">
-          <a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/modernekunstHaarlem/" target="_blank"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+          <a href="#" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+          <a href="https://www.youtube.com/channel/UCN88Un58iX2u8tMpLacPgqw" target="_blank"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
         </div>
       </div>
       <div class="col-md-4 contact">
