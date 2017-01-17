@@ -24,10 +24,11 @@
 		while($rec = mysqli_fetch_assoc($result)) {
 			toon_tentoonstelling_agenda($rec['datum_start'], $rec['datum_eind'], $rec['korte_inleiding'], $rec['titel'], $rec['naam']);
 		}
-		echo '</div>';
+		echo '</div></div>';
 	}
 	function toon_tentoonstelling_agenda($datum_start, $datum_eind, $korte_inleiding, $titel, $naam_locatie) {
-		echo '<h3>'.$datum_start.' - '.$datum_eind.'<b> '.$titel.'</b> - '.$naam_locatie.'</h3><div><p>'.$korte_inleiding. '</p></div></div>';
+		$format = "j F 'y";
+		echo '<h3>'.date($format, strtotime($datum_start)).' - '.date($format, strtotime($datum_eind)).'<b> '.$titel.'</b> - '.$naam_locatie.'</h3><div><p>'.$korte_inleiding. '</p></div>';
 	}
 	include 'footer.php'
 ?>
