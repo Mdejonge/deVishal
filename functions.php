@@ -87,7 +87,7 @@ function toon_pagina($nummer, $tekst = '', $sponsorfooter = NULL, $titel = '') {
 		die('DB-verbinding mislukt '.$conn->connect_error);
 	}
 	mysqli_set_charset($conn,'utf8');
-	$query = 'SELECT titel, tekst, sponsorfooter, naam FROM pagina INNER JOIN template ON pagina.templateId = template.templateId WHERE paginaId = '.$nummer;
+	$query = 'SELECT titel, tekst, sponsorfooter, naam, paginaId FROM pagina INNER JOIN template ON pagina.templateId = template.templateId WHERE paginaId = '.$nummer;
 	$result = $conn->query($query);
 	if ($result->num_rows > 0) {
 		while($rec = $result->fetch_assoc()) {
@@ -100,7 +100,7 @@ function toon_pagina($nummer, $tekst = '', $sponsorfooter = NULL, $titel = '') {
 			}
 
             if(empty($tekst))
-			    geef_html($rec['titel'], $rec['tekst']);
+			    geef_html($rec['titel'], $rec['tekst'], $rec['paginaId']);
             else
                 geef_html($titel, $tekst);
 
