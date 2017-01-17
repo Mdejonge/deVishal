@@ -4,7 +4,7 @@ RewriteRule ^Nu\ te\ zien mainpage.php?page_name=Nu+te+zien [NC,L]
 RewriteRule ^Lid\ van\ de\ Vishal mainpage.php?page_name=Lid+van+de+Vishal [NC,L]
 RewriteRule ^Bestuur\ en\ medewerkers mainpage.php?page_name=Bestuur+en+medewerkers [NC,L]
 RewriteRule ^Aanbod\ primair\ onderwijs mainpage.php?page_name=Aanbod+primair+onderwijs [NC,L]
-RewriteRule ^Videos mainpage.php?page_name=Video's [NC,L]
+RewriteRule ^Videos mainpage.php?page_name=Videos [NC,L]
 RewriteRule ^Contact mainpage.php?page_name=Contact [NC,L]
 RewriteRule ^Vriend\ van\ de\ Vishal mainpage.php?page_name=Vriend+van+de+Vishal [NC,L]
 
