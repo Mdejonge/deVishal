@@ -8,6 +8,8 @@ RewriteRule ^Video's mainpage.php?page_name=Video's [NC,L]
 RewriteRule ^Contact mainpage.php?page_name=Contact [NC,L]
 RewriteRule ^Vriend\ van\ de\ Vishal mainpage.php?page_name=Vriend+van+de+Vishal [NC,L]
 
+RewriteRule ^Actueel/Evenementen agenda.php [NC,L]
+
 RewriteRule ^Tentoonstellingen/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Kunstenaars/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Wie\ zijn\ wij/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
@@ -15,6 +17,7 @@ RewriteRule ^Visschool/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Archief/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Contact/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Steun\ ons/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
+
 
 RewriteRule ^Edit/([0-9])$ edit.php?page_id=$1 [NC,L]
 
