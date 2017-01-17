@@ -9,7 +9,11 @@ RewriteRule ^Lid\ van\ de\ Vishal mainpage.php?page_name=Lid+van+de+Vishal [NC,L
 RewriteRule ^Bestuur\ en\ medewerkers mainpage.php?page_name=Bestuur+en+medewerkers [NC,L]
 RewriteRule ^Aanbod\ primair\ onderwijs mainpage.php?page_name=Aanbod+primair+onderwijs [NC,L]
 RewriteRule ^Videos mainpage.php?page_name=Videos [NC,L]
+
+
+RewriteRule ^Contact/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Contact mainpage.php?page_name=Contact [NC,L]
+
 RewriteRule ^Vriend\ van\ de\ Vishal mainpage.php?page_name=Vriend+van+de+Vishal [NC,L]
 
 RewriteRule ^Actueel/Evenementen agenda.php [NC,L]
@@ -22,7 +26,6 @@ RewriteRule ^Visschool/Onderwijsportaal http://www.kunsteducatie.net/vishal.html
 RewriteRule ^Visschool/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 
 RewriteRule ^Archief/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
-RewriteRule ^Contact/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 
 RewriteRule ^Steun\ ons/Sponsoren sponsoren.php [NC,L]
 RewriteRule ^Steun\ ons/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
