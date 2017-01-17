@@ -186,7 +186,7 @@ function get_all_free_submenuItems($menuId) {
         echo $return;
     }
     else {
-        echo 'Helaas, geen gegevens gevonden.';
+        echo '<option>Geen resultaten gevonden. Kies een ander menu-item of zet op niet zichtbaar.</option>';
     }
     mysqli_close($conn);
 }

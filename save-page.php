@@ -50,7 +50,7 @@ elseif($command == 'add'){
 
     $stmt->bind_param("ssiiii", $_POST['title'], $_POST['editorText'], $zichtbaar, $sponsor, $submenuItemId, $templateId);
 
-    if($_FILES['image']){
+    if(!empty($_FILES['image'])){
         $target_file = 'uploads/' . basename($_FILES["image"]["name"]);
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         $uploadOk = 1;

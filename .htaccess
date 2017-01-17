@@ -25,7 +25,6 @@ RewriteRule ^Steun\ ons/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 
 
 RewriteRule ^Edit/([0-9]+)$ edit.php?page_id=$1 [NC,L]
-RewriteRule ^Add add-page.php [NC,L]
 RewriteRule ^Admin admin.php [NC,L]
 RewriteRule ^Uitloggen admin.php?com=uitloggen [NC,L]
 
