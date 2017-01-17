@@ -3,10 +3,15 @@ require 'header.php';
 
 if(isset($_GET['com']))
 {
-    if($_GET['com'] == 'uitloggen'){
+    if($_GET['com'] == 'uitloggen') {
         uitloggen();
     }
 }
+if(isset($_GET['location'])){
+    $location = $_GET['location'];
+}
+else
+    $location = '';
 
 ?>
 
@@ -27,18 +32,6 @@ if(isset($_GET['com']))
     <!-- Begin content -->
     <div class="row content">
       <div class="container">
-          <!--<div class="col-md-4 left">
-              <h5>Adres</h5>
-          </div>
-
-          <div class="center col-md-4">
-              <h5>De Vishal</h5>
-
-          </div>
-
-          <div class="col-md-4 right">
-              <h5>Openingstijden</h5>
-          </div> -->
 
           <div class="row">
           <div class="col-md-4 replaceable">
@@ -108,7 +101,7 @@ include_once 'footer.php'
                 $.ajax({
                     type: 'post',
                     url: 'authenticatie.php',
-                    data: $('form').serialize() + "&command=inloggen",
+                    data: $('form').serialize() + "&command=inloggen&location=<?=$location?>",
                     success: function (data) {
                         if (~data.indexOf("error")){
                             alert(data);
