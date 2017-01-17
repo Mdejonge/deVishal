@@ -9,10 +9,16 @@ if(isset($_POST['command']))
     }
 }
 
+/*
+ * Het netjes tonen van een lid
+ */
 function toon_lid($voornaam, $achternaam, $website) {
     return '<li><a href="'.$website.'" target="_blank">'.$voornaam.' '.$achternaam.'</a></li>';
 }
 
+/*
+ * Het netjes tonen van vrijwilligers
+ */
 function toon_vrijwilliger($voornaam, $achternaam, $foto_link, $tekst) {
     $output =
         '<li>
@@ -34,6 +40,9 @@ function toon_vrijwilliger($voornaam, $achternaam, $foto_link, $tekst) {
     
 }
 
+/*
+ * Het netjes tonen van sponsoren op de algemene sponsorenpagina
+ */
 function toon_sponsors($naam, $tekst, $zichtbaar, $foto_link) {
     $naamtekst = '';
     if($zichtbaar==1) {
@@ -53,6 +62,9 @@ function toon_sponsors($naam, $tekst, $zichtbaar, $foto_link) {
 		      </div>';
 }
 
+/*
+ * Het netjes tonen van sponsoren in de footer
+ */
 function toon_sponsor($naam, $zichtbaar, $foto_link) {
     $naamtekst = '';
     if($zichtbaar==1) {
@@ -67,6 +79,9 @@ function toon_sponsor($naam, $zichtbaar, $foto_link) {
     '</div>';
 }
 
+/*
+ * Het netjes tonen van de berichten (Tentoonstellingen) in de footer
+ */
 function toon_bericht($naam, $startdatum, $foto_link) {
     echo '<div class="row bericht">
 		      	<a href="Tentoonstelling/'.$naam.'">
@@ -81,6 +96,12 @@ function toon_bericht($naam, $startdatum, $foto_link) {
 		      </div>';
 }
 
+/*
+ * Het tonen van een pagina vanuit de database óf als preview
+ * @var $tekst is optioneel: alleen bij de preview wordt het gebruikt
+ * @var $sponsorfooter is optioneel: alleen bij de preview wordt het gebruikt
+ * @var $titel is optioneel: alleen bij de preview wordt het gebruikt
+ */
 function toon_pagina($nummer, $tekst = '', $sponsorfooter = NULL, $titel = '') {
 	global $conn;
 	if ($conn->connect_error) {
@@ -121,6 +142,10 @@ function toon_pagina($nummer, $tekst = '', $sponsorfooter = NULL, $titel = '') {
 	mysqli_close($conn);
 }
 
+/*
+ * Functie om te checken of je nog ingelogd bent. Zoja, dan wordt er 20 minuten vanaf het moment
+ * van checken bijgerekend
+ */
 function logged_in() {
     if(isset($_SESSION['gebruikersnaam']) && isset($_SESSION['id'])) {
         if(time() > $_SESSION['discard_after']){
@@ -137,6 +162,9 @@ function logged_in() {
         return false;
 }
 
+/*
+ * Functie om uit te loggen
+ */
 function uitloggen()
 {
     unset($_SESSION['gebruikersnaam']);
@@ -145,6 +173,9 @@ function uitloggen()
     session_destroy();
 }
 
+/*
+ * Functie om alle menuItems uit de database te verkrijgen
+ */
 function get_all_menuItems() {
     $conn = new mysqli(HOST, USER, PASSWORD, DATABASE);
 
@@ -166,6 +197,9 @@ function get_all_menuItems() {
     mysqli_close($conn);
 }
 
+/*
+ * Functie om alle niet-gebruikte menuItems uit de database te verkrijgen
+ */
 function get_all_free_submenuItems($menuId) {
     global $conn;
     require 'dbconnect.php';
@@ -191,6 +225,9 @@ function get_all_free_submenuItems($menuId) {
     mysqli_close($conn);
 }
 
+/*
+ * Functie om alle tentoonstellingsplaatsen uit de database te verkrijgen
+ */
 function get_all_tentoonstellingPlaces() {
     global $conn;
     if ($conn->connect_error) {
@@ -214,6 +251,9 @@ function get_all_tentoonstellingPlaces() {
     mysqli_close($conn);
 }
 
+/*
+ * Functie om alle leden uit de DB te verkrijgen
+ */
 function get_all_leden() {
     global $conn;
     $text = '';
@@ -232,6 +272,9 @@ function get_all_leden() {
     }
 }
 
+/*
+ * Functie om alle vrijwilligers uit de DB te verkrijgen
+ */
 function get_vrijwilligers()
 {
     global $conn;
@@ -252,10 +295,17 @@ function get_vrijwilligers()
     mysqli_close($conn);
 }
 
+/*
+ * Functie om te controleren of je op een mobiel/tablet zit of op een desktop
+ */
 function isMobile() {
     return preg_match("/(android|webos|avantgo|iphone|ipad|ipod|blackbe‌​rry|iemobile|bolt|bo‌​ost|cricket|docomo|f‌​one|hiptop|mini|oper‌​a mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|‌​webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
 
+/*
+ * Functie om een pageId te verkrijgen m.b.v. een pagina naam
+ * $searc_page is optioneel: Wordt alleen gebruikt wanneer je zoekt op Titel in de tabel Pagina i.p.v. op submenuItemNaam
+ */
 function get_page_id($page_name, $search_page=false)
 {
     global $conn;

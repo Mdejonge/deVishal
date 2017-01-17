@@ -1,4 +1,8 @@
 RewriteEngine On    # Turn on the rewriting engine
+# Handle requests for "Alle links in de navigatie worden hiermee afgehandeld!"
+# [NL] -> case insensitive
+# [L] -> Niet meer regels doorlezen dan nodig
+# [B] -> Zorgt ervoor dat de link gecodeerd wordt(html encode..)
 RewriteRule ^Homepage index.php [NC,L]
 RewriteRule ^Nu\ te\ zien mainpage.php?page_name=Nu+te+zien [NC,L]
 RewriteRule ^Lid\ van\ de\ Vishal mainpage.php?page_name=Lid+van+de+Vishal [NC,L]
@@ -20,16 +24,15 @@ RewriteRule ^Visschool/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Archief/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 RewriteRule ^Contact/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 
-RewriteRule ^Steun\ ons/Sponsoren sponsoren.php [NC,L]    # Handle requests for "Sponsor pages"
+RewriteRule ^Steun\ ons/Sponsoren sponsoren.php [NC,L]
 RewriteRule ^Steun\ ons/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 
 
-RewriteRule ^Edit/([0-9]+)$ edit.php?page_id=$1 [NC,L]
-RewriteRule ^Admin admin.php [NC,L]
-RewriteRule ^Uitloggen admin.php?com=uitloggen [NC,L]
+RewriteRule ^Edit/([0-9]+)$ edit.php?page_id=$1 [NC,L] # Handle requests for "Edit pages"
+RewriteRule ^Admin admin.php [NC,L] # Handle requests for "admin gedeelte"
+RewriteRule ^Uitloggen admin.php?com=uitloggen [NC,L] # Handle requests for "het uitloggen"
 
 
-RewriteRule ^Sponsoren/([A-Za-z/&\s\']+)?$ mainpage.php?page_name=$1&search_page=true [NC,L,B]
+RewriteRule ^Sponsoren/([A-Za-z/&\s\']+)?$ mainpage.php?page_name=$1&search_page=true [NC,L,B] # Handle requests for "footerlinks naar sponsoren"
 
-RewriteRule ^Tentoonstelling/([A-Za-z\s\'\,]+)?$ mainpage.php?page_name=$1&search_page=true [NC,L,B]
-#page-sponsors.php?sponsor_name=$1 [NC,L,B]    # Handle requests for "Sponsor pages"
+RewriteRule ^Tentoonstelling/([A-Za-z\s\'\,]+)?$ mainpage.php?page_name=$1&search_page=true [NC,L,B] # Handle requests for "footerlinks naar tentoonstellingen"
