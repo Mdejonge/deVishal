@@ -27,8 +27,10 @@
 		echo '</div></div>';
 	}
 	function toon_tentoonstelling_agenda($datum_start, $datum_eind, $korte_inleiding, $titel, $naam_locatie) {
-		$format = "j F 'y";
-		echo '<h3>'.date($format, strtotime($datum_start)).' - '.date($format, strtotime($datum_eind)).'<b> '.$titel.'</b> - '.$naam_locatie.'</h3><div><p>'.$korte_inleiding. '</p></div>';
+		$oldLocale = setlocale(LC_TIME, 'nl_NL');
+		$format = "%e %B '%y";
+		echo '<h3>'.strftime($format, strtotime($datum_start)).' - '.strftime($format, strtotime($datum_eind)).'<b> '.$titel.'</b> - '.$naam_locatie.'</h3><div><p>'.$korte_inleiding. '</p></div>';
+		setlocale(LC_TIME, $oldLocale);
 	}
 	include 'footer.php'
 ?>
