@@ -74,9 +74,13 @@
                 $submenu = '';
                 if($vorigmenuItem<>'')
                     $output .= '</ul></li>';
-                $output .= '<li class="dropdown full-width">
-				<a href="'.$rec['submenuItem'].'" class="dropdown-toggle" data-toggle="dropdown">'.$rec['menuItem'].'</a>
-				<ul class="dropdown-menu">';
+                $output .= '<li class="dropdown full-width">';
+				if(isMobile()){
+                    $output .= '<a href="'.$rec['submenuItem'].'" class="dropdown-toggle" data-toggle="dropdown">'.$rec['menuItem'].'</a>';
+                } else {
+                    $output .= '<a href="'.$rec['submenuItem'].'" class="dropdown-toggle">'.$rec['menuItem'].'</a>';
+                }
+				$output .= '<ul class="dropdown-menu">';
                 $vorigmenuItem = $rec['menuItem'];
             }
             if($rec['volgorde']>-1)
