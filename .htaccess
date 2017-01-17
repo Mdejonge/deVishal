@@ -26,4 +26,5 @@ RewriteRule ^Steun\ ons/([A-Za-z-\s]+)$ mainpage.php?page_name=$1 [NC,L]
 
 RewriteRule ^Edit/([0-9])$ edit.php?page_id=$1 [NC,L]
 
-RewriteRule ^Sponsoren/([A-Za-z]+)$ page-sponsors.php?sponsor_name=$1 [NC,L]    # Handle requests for "Sponsor pages"
+RewriteRule ^Sponsoren/([A-Za-z/&\s]+)$ mainpage.php?page_name=$1&sponsor=true [NC,L,B]
+#page-sponsors.php?sponsor_name=$1 [NC,L,B]    # Handle requests for "Sponsor pages"
