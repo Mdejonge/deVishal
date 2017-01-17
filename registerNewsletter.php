@@ -5,7 +5,6 @@ include('dbconnect.php');
 if(isset($_POST['email']))
 {
     $email = $_POST['email'];
-//    $check = mysqli_query($conn, "SELECT mailadres FROM klant WHERE mailadres=?");
 
     $check = "SELECT mailadres FROM klant WHERE mailadres='".$email."'";
     $ins = "INSERT INTO klant (mailadres) VALUES ('".$email."')";
