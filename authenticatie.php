@@ -41,7 +41,8 @@ function inloggen($username, $wachtwoord, $location = false)
                     }
                     echo 'Welcome user' .
                         '<ul>
-                            <li><a href="add-page.php">Pagina toevoegen</a></li>
+                            <li><a href="add-page.php">Pagina\'s toevoegen / Leden toevoegen</a></li>
+                            <li><a href="overview-pages.php">Overzicht van alle pagina\'s</a></li>
                         </ul>';
                 }
                 else
