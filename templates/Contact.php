@@ -77,6 +77,7 @@ function geef_html($titel, $tekst, $paginaId=false) {
         </div>
     </div>
 </form>
+</div>
 <div class="row">
     <div id="map"></div>
 </div>
